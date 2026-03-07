@@ -27,7 +27,7 @@
 
       td_lctl: tap_dance_lctrl_tog4 {
           compatible = "zmk,behavior-tap-dance";
-          label = "CONTROL_TOGGLE";
+          label = "LEFT_CONTROL_TOGGLE_LAYER_4";
           #binding-cells = <0>;
           tapping-term-ms = <200>;
           bindings = <&kp LCTRL>, <&tog 4>;
@@ -35,7 +35,7 @@
 
       td_rctl: tap_dance_rctrl_tog5 {
           compatible = "zmk,behavior-tap-dance";
-          label = "CONTROL_TOGGLE";
+          label = "RIGHT_CONTROL_TOGGLE_LAYER_5";
           #binding-cells = <0>;
           tapping-term-ms = <200>;
           bindings = <&kp LCTRL>, <&tog 5>, <&tog 6>;
