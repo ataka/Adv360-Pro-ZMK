@@ -85,7 +85,6 @@
         &none &none        &none        &none        &none                                       &none &none &none &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none &none &none
       >;
     };
-
     dverok_layer {
       display-name = "Dvorak";
       bindings = <
@@ -100,7 +99,7 @@
       display-name = "Mouse";
       bindings = <
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp APOS  &kp COMMA &mmv MOVE_UP &kp P      &kp Y  &none                                                             &none &kp F  &kp G  &mmv MOVE_UP &kp R &kp L &kp SLASH
+        &kp TAB   &kp APOS  &kp COMMA &mmv MOVE_UP &kp P &kp Y  &none                                                                  &none &kp F  &kp G &mmv MOVE_UP &kp R &kp L &kp SLASH
         &kp ESC   &kp A     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp I &none &td_lctl &kp LALT &kp LALT &td_rctl              &none &kp D  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp S &kp BSLH
         &kp LSHFT &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp RSHFT
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &mkp RCLK &mkp LCLK              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
@@ -126,6 +125,5 @@
       display-name = "Yellow";    
       status = "reserved";
     };
-
   };
 };
