@@ -106,31 +106,31 @@
     dverok_layer {
       display-name = "Dvorak";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp APOS  &kp COMMA &kp DOT &kp P      &kp Y  &none                                                            &none &kp F  &kp G  &kp C     &kp R    &kp L    &kp SLASH
-        &kp ESC   &kp A     &kp O    &kp E    &kp U      &kp I  &none           &td_lctl  &kp LALT &kp LALT  &td_rctl            &none &kp D  &kp H  &kp T     &kp N    &kp S    &kp BSLH
-        &kp LSHFT &kp SEMI  &kp Q    &kp J    &kp K      &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp M  &kp W     &kp V    &kp Z    &kp RSHFT
-        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
+        &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &tog 1                                                                   &mo 3 &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
+        &kp TAB   &kp APOS  &kp COMMA &kp DOT   &kp P     &kp Y     &none                                                                    &none &kp F     &kp G     &kp C     &kp R     &kp L     &kp SLASH
+        &kp ESC   &kp A     &kp O     &kp E     &kp U     &kp I     &none                 &td_lctl  &kp LALT      &kp LALT  &td_rctl         &none &kp D     &kp H     &kp T     &kp N     &kp S     &kp BSLH
+        &kp LSHFT &kp SEMI  &kp Q     &kp J     &kp K     &kp X                                     &mt LGUI HOME &mt LGUI PG_UP                   &kp B     &kp M     &kp W     &kp V     &kp Z     &kp RSHFT
+        &mo 2     &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                       &kp BSPC  &kp DEL   &kp END       &kp PG_DN &kp ENTER &kp SPACE              &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo 2
       >;
     };
     mouse_layer {
       display-name = "Mouse";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp APOS  &kp COMMA &mmv MOVE_UP &kp P &kp Y  &none                                                                  &none &kp F  &kp G &mmv MOVE_UP &kp R &kp L &kp SLASH
-        &kp ESC   &mo 6     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp I &none &td_lctl &kp LALT &kp LALT &td_rctl              &none &kp D  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo 6 &kp BSLH
-        &kp LSHFT &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp RSHFT
-        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &mkp LCLK &mkp RCLK &kp END &kp PG_DN &mkp RCLK &mkp LCLK              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
+        &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &mmv MOVE_UP &trans &trans    &none                                                                    &none &trans    &trans    &mmv MOVE_UP &trans &trans    &trans
+        &trans    &mo 6     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo 6 &trans
+        &trans    &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL &trans                                    &trans        &trans                           &trans    &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  &trans
+        &mo 2     &trans    &trans    &trans    &trans                          &mkp LCLK &mkp RCLK &trans        &trans &mkp RCLK &mkp LCLK                 &trans    &trans    &trans    &trans    &mo 2
       >;
     };
     scroll_layer {
       display-name = "Mouse Scroll";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp APOS  &kp COMMA &msc SCRL_UP &kp P &kp Y  &none                                                                  &none &kp F  &kp G &msc SCRL_DOWN &kp R &kp L &kp SLASH
-        &kp ESC   &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &kp I &none &td_lctl &kp LALT &kp LALT &td_rctl              &none &kp D  &msc SCRL_LEFT &msc SCRL_UP &msc SCRL_RIGHT &kp S &kp BSLH
-        &kp LSHFT &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp RSHFT
-        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &trans   &trans    &trans   &trans    &trans    &trans                 &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
+        &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &msc SCRL_UP &trans &trans    &none                                                                    &none &trans    &trans    &msc SCRL_DOWN &trans &trans  &trans
+        &trans    &mo 6     &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &msc SCRL_LEFT &msc SCRL_UP &msc SCRL_RIGHT &mo 6 &trans
+        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
+        &mo 2     &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
       >;
     };
     qwerty_layer {
