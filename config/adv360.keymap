@@ -25,20 +25,20 @@
           bindings = <&kp>, <&kp>;
       };
 
-      td_lctl: tap_dance_lctrl_tog8 {
+      td_lctl: tap_dance_lctrl_tog4 {
           compatible = "zmk,behavior-tap-dance";
           label = "CONTROL_TOGGLE";
           #binding-cells = <0>;
           tapping-term-ms = <200>;
-          bindings = <&kp LCTRL>, <&tog 8>;
+          bindings = <&kp LCTRL>, <&tog 4>;
       };
 
-      td_rctl: tap_dance_rctrl_tog9 {
+      td_rctl: tap_dance_rctrl_tog5 {
           compatible = "zmk,behavior-tap-dance";
           label = "CONTROL_TOGGLE";
           #binding-cells = <0>;
           tapping-term-ms = <200>;
-          bindings = <&kp LCTRL>, <&tog 9>;
+          bindings = <&kp LCTRL>, <&tog 5>;
       };
     };
 
@@ -85,25 +85,6 @@
         &none &none        &none        &none        &none                                       &none &none &none &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none &none &none
       >;
     };
-    extra1 { 
-      display-name = "Red";    
-      status = "reserved";
-    };
-
-    extra2 { 
-      display-name = "Purple";    
-      status = "reserved";
-    };
-
-    extra3 { 
-      display-name = "Cyan";    
-      status = "reserved";
-    };
-
-    extra4 { 
-      display-name = "Yellow";    
-      status = "reserved";
-    };
 
     dverok_layer {
       display-name = "Dvorak";
@@ -124,6 +105,26 @@
         &kp LSHFT &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp RSHFT
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &mkp RCLK &mkp LCLK              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
+    };
+
+    extra1 { 
+      display-name = "Red";    
+      status = "reserved";
+    };
+
+    extra2 { 
+      display-name = "Purple";    
+      status = "reserved";
+    };
+
+    extra3 { 
+      display-name = "Cyan";    
+      status = "reserved";
+    };
+
+    extra4 { 
+      display-name = "Yellow";    
+      status = "reserved";
     };
 
   };
