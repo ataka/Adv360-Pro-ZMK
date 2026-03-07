@@ -120,7 +120,7 @@
         &kp TAB   &kp APOS  &kp COMMA &mmv MOVE_UP &kp P &kp Y  &none                                                                  &none &kp F  &kp G &mmv MOVE_UP &kp R &kp L &kp SLASH
         &kp ESC   &mo 6     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp I &none &td_lctl &kp LALT &kp LALT &td_rctl              &none &kp D  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo 6 &kp BSLH
         &kp LSHFT &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp RSHFT
-        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &mkp RCLK &mkp LCLK              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
+        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &mkp LCLK &mkp RCLK &kp END &kp PG_DN &mkp RCLK &mkp LCLK              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
     };
     scroll_layer {
@@ -130,7 +130,7 @@
         &kp TAB   &kp APOS  &kp COMMA &msc SCRL_UP &kp P &kp Y  &none                                                                  &none &kp F  &kp G &msc SCRL_DOWN &kp R &kp L &kp SLASH
         &kp ESC   &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &kp I &none &td_lctl &kp LALT &kp LALT &td_rctl              &none &kp D  &msc SCRL_LEFT &msc SCRL_UP &msc SCRL_RIGHT &kp S &kp BSLH
         &kp LSHFT &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp RSHFT
-        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &mkp RCLK &mkp LCLK              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
+        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &trans   &trans    &trans   &trans    &trans    &trans                 &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
     };
     qwerty_layer {
