@@ -132,7 +132,7 @@
         &kp LSHFT &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp RSHFT
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &mkp RCLK &mkp LCLK              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
-    }
+    };
     qwerty_layer {
       display-name = "Qwerty";
       bindings = <
