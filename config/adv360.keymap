@@ -127,8 +127,8 @@
       display-name = "Mouse Scroll";
       bindings = <
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp APOS  &kp COMMA &msc SCRL_UP &kp P &kp Y  &none                                                                  &none &kp F  &kp G &msc SCRL_UP &kp R &kp L &kp SLASH
-        &kp ESC   &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &kp I &none &td_lctl &kp LALT &kp LALT &td_rctl              &none &kp D  &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &kp S &kp BSLH
+        &kp TAB   &kp APOS  &kp COMMA &msc SCRL_UP &kp P &kp Y  &none                                                                  &none &kp F  &kp G &msc SCRL_DOWN &kp R &kp L &kp SLASH
+        &kp ESC   &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &kp I &none &td_lctl &kp LALT &kp LALT &td_rctl              &none &kp D  &msc SCRL_LEFT &msc SCRL_UP &msc SCRL_RIGHT &kp S &kp BSLH
         &kp LSHFT &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B  &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp RSHFT
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &mkp RCLK &mkp LCLK              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
