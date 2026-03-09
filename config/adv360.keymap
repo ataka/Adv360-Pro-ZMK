@@ -128,7 +128,7 @@
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &msc SCRL_UP &trans &trans    &none                                                                    &none &trans    &trans    &msc SCRL_DOWN &trans &trans  &trans
-        &trans    &mo 6     &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &msc SCRL_LEFT &msc SCRL_UP &msc SCRL_RIGHT &mo 6 &trans
+        &trans    &mo 6     &msc SCRL_RIGHT &msc SCRL_DOWN &msc SCRL_LEFT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &msc SCRL_RIGHT &msc SCRL_UP &msc SCRL_LEFT &mo 6 &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
         &mo 2     &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
       >;
