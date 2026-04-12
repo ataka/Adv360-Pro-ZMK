@@ -123,10 +123,10 @@
       display-name = "Mouse";
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &mmv MOVE_UP &trans &trans    &none                                                                    &none &trans    &trans    &mmv MOVE_UP &trans &trans    &trans
-        &trans    &mo 6     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo 6 &trans
+        &trans    &trans    &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN &trans &none                                                            &none &trans    &msc SCRL_DOWN &mmv MOVE_UP &msc SCRL_UP &trans &trans
+        &trans    &msc SCRL_RIGHT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_LEFT &none &td_lctl &trans &trans &td_rctl         &none &msc SCRL_RIGHT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_LEFT &trans
         &trans    &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL &trans                                    &trans        &trans                           &trans    &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  &trans
-        &mo 2     &trans    &trans    &trans    &trans                          &mkp LCLK &mkp RCLK &trans        &trans &mkp RCLK &mkp LCLK                 &trans    &trans    &trans    &trans    &mo 2
+        &mo 2     &mo 6     &trans    &trans    &trans                          &mkp LCLK &mkp RCLK &trans        &trans &mkp RCLK &mkp LCLK                 &trans    &trans    &trans    &trans    &mo 2
       >;
     };
     /* layer 6 */
@@ -135,9 +135,9 @@
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &msc SCRL_UP &trans &trans    &none                                                                    &none &trans    &trans    &msc SCRL_DOWN &trans &trans  &trans
-        &trans    &mo 6     &msc SCRL_RIGHT &msc SCRL_DOWN &msc SCRL_LEFT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &msc SCRL_RIGHT &msc SCRL_UP &msc SCRL_LEFT &mo 6 &trans
+        &trans    &trans    &msc SCRL_RIGHT &msc SCRL_DOWN &msc SCRL_LEFT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &msc SCRL_RIGHT &msc SCRL_UP &msc SCRL_LEFT &trans &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
-        &mo 2     &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
+        &mo 2     &mo 6     &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
       >;
     };
     /* layer 7 */
