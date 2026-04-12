@@ -10,6 +10,17 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
 
+&mmv_input_listener {
+  mouse_low {
+    layers = <6>;
+    input-processors = <&zip_xy_scaler 1 2>;
+  };
+
+  mouse_high {
+    layers = <7>;
+    input-processors = <&zip_xy_scaler 2 1>;
+};
+
 / {
     behaviors {
       #include "macros.dtsi"
@@ -41,18 +52,6 @@
           bindings = <&kp LCTRL>, <&tog 5>;
       };
     };
-
-
-  &mmv_input_listener {
-    mouse_low {
-      layers = <6>;
-      input-processors = <&zip_xy_scaler 1 2>;
-    };
-
-    mouse_high {
-      layers = <7>;
-      input-processors = <&zip_xy_scaler 2 1>;
-  };
 
   keymap {
     compatible = "zmk,keymap";
