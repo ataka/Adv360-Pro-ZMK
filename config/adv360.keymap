@@ -44,6 +44,7 @@
   keymap {
     compatible = "zmk,keymap";
 
+    /* layer 0 */
     default_layer {
       display-name = "Base";
       bindings = <
@@ -54,6 +55,7 @@
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
     };
+    /* layer 1 */
     keypad {
       display-name = "Kp";
       bindings = <
@@ -64,6 +66,7 @@
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp KP_N0              &kp UP     &kp DOWN     &kp KP_DOT    &kp RBKT        &mo 2
       >;
     };
+    /* layer 2 */
     fn {
       display-name = "Fn";
       bindings = <
@@ -74,6 +77,7 @@
         &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans              &trans &trans &trans  &trans  &trans
       >;
     };
+    /* layer 3 */
     mod {
       display-name = "Mod";
       bindings = <
@@ -103,6 +107,7 @@
       display-name = "Yellow";    
       status = "reserved";
     };
+    /* layer 4 */
     dverok_layer {
       display-name = "Dvorak";
       bindings = <
@@ -113,6 +118,7 @@
         &mo 2     &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                       &kp BSPC  &kp DEL   &kp END       &kp PG_DN &kp ENTER &kp SPACE              &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo 2
       >;
     };
+    /* layer 5 */
     mouse_layer {
       display-name = "Mouse";
       bindings = <
@@ -123,6 +129,7 @@
         &mo 2     &trans    &trans    &trans    &trans                          &mkp LCLK &mkp RCLK &trans        &trans &mkp RCLK &mkp LCLK                 &trans    &trans    &trans    &trans    &mo 2
       >;
     };
+    /* layer 6 */
     scroll_layer {
       display-name = "Mouse Scroll";
       bindings = <
@@ -133,6 +140,7 @@
         &mo 2     &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
       >;
     };
+    /* layer 7 */
     qwerty_layer {
       display-name = "Qwerty";
       bindings = <
