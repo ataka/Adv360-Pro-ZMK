@@ -131,7 +131,7 @@
       >;
     };
     /* layer 6 */
-    scroll_layer {
+    mouse_low_layer {
       display-name = "Mouse LOW";
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
@@ -142,7 +142,7 @@
       >;
     };
     /* layer 7 */
-    scroll_layer {
+    mouse_high_layer {
       display-name = "Mouse HIGH";
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
