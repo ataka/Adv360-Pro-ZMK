@@ -9,6 +9,7 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20   /*  10 */
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 
 / {
     behaviors {
@@ -124,8 +125,8 @@
       display-name = "Mouse";
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &mo 6     &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN &mo 7 &none                                                             &none &mo 7     &msc SCRL_DOWN &mmv MOVE_UP &msc SCRL_UP &mo 6 &trans
-        &trans    &msc SCRL_RIGHT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_LEFT &none &td_lctl &trans &trans &td_rctl         &none &msc SCRL_RIGHT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_LEFT &trans
+        &trans    &mo 6     &msc SCRL_DOWN &mmv MOVE_UP &msc SCRL_UP &mo 7 &none                                                             &none &mo 7     &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN &mo 6 &trans
+        &trans    &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT &none &td_lctl &trans &trans &td_rctl         &none &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT &trans
         &trans    &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL &trans                                    &trans        &trans                           &trans    &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  &trans
         &mo 2     &mo 8     &trans    &trans    &trans                          &mkp LCLK &mkp RCLK &trans        &trans &mkp RCLK &mkp LCLK                 &trans    &trans    &trans    &trans    &mo 2
       >;
@@ -157,8 +158,8 @@
       display-name = "Mouse Scroll";
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &msc SCRL_UP &trans &trans    &none                                                                    &none &trans    &trans    &msc SCRL_DOWN &trans &trans  &trans
-        &trans    &trans    &msc SCRL_RIGHT &msc SCRL_DOWN &msc SCRL_LEFT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &msc SCRL_RIGHT &msc SCRL_UP &msc SCRL_LEFT &trans &trans
+        &trans    &trans    &trans    &msc SCRL_UP &trans &trans    &none                                                                    &none &trans    &trans    &msc SCRL_UP &trans &trans  &trans
+        &trans    &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &none    &td_lctl  &trans        &trans &td_rctl            &none &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
         &mo 2     &mo 8     &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
       >;
@@ -187,4 +188,8 @@
     layers = <7>;
     input-processors = <&zip_xy_scaler 2 1>;
   };
+};
+
+&msc_input_listener {
+  input-processors = <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 };
