@@ -32,6 +32,8 @@
 #define CURSOR_R 12
 #define MOUSE_L 13
 #define MOUSE_R 14
+#define SCROLL_L 15
+#define SCROLL_R 16
 
 / {
     behaviors {
@@ -97,7 +99,7 @@
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog KEYPAD                                                    &mo MOD &kp N6  &kp N7    &kp N8       &kp N9        &kp N0          &kp MINUS
         &kp TAB   &hm RGUI APOS &hm RALT COMMA &hm RCTRL DOT &hm LALT P &hm LCTRL Y &none                                        &none &hm LCTRL F &hm LALT G &hm RCTRL C &hm RALT R &hm RGUI L     &kp SLASH
         &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &lth UTIL I &none &mt LCTRL LANG2 &td_lalt &td_ralt &mt LCTRL LANG1 &none &lth UTIL D &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
-        &kp LSHFT &lth CURSOR_L SEMI  &kp Q    &lth MOUSE_L J    &kp K      &kp X    &mt LGUI HOME &mt LGUI PG_UP                      &kp B   &kp M     &lth MOUSE_R W &kp V       &lth CURSOR_R Z &kp RSHFT
+        &kp LSHFT &lth CURSOR_L SEMI  &lth SCROLL_L Q    &lth MOUSE_L J    &kp K      &kp X    &mt LGUI HOME &mt LGUI PG_UP            &kp B   &kp M     &lth MOUSE_R W &lth SCROLL_R V &lth CURSOR_R Z &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE               &kp UP    &kp DOWN     &kp LBKT      &kp RBKT        &mo FN
       >;
     };
@@ -278,6 +280,32 @@
         &trans          &trans          &mmv MOVE_UL    &mmv MOVE_UP    &mmv MOVE_UR    &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
         &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
         &trans          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans                                                &trans    &trans                                          &trans          &mo MS_HIGH     &trans          &mo MS_LOW      &trans          &trans
+        &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
+      >;
+    };
+    /* layer 15 */
+    /* hold Dvorak q, left a o e u = mods, right c / h t n = scroll,
+     * f g c r l = home pgup up pgdn end, thumbs = clicks */
+    scroll_l_layer {
+      display-name = "Scroll L";
+      bindings = <
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &kp HOME        &kp PG_UP       &msc SCRL_UP    &kp PG_DN       &kp END         &trans
+        &trans          &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT &trans          &trans
+        &trans          &trans          &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
+      >;
+    };
+    /* layer 16 */
+    /* hold Dvorak v, right h t n s = mods, left . / o e u = scroll,
+     * ' , . p y = end pgdn up pgup home, thumbs = clicks */
+    scroll_r_layer {
+      display-name = "Scroll R";
+      bindings = <
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &kp END         &kp PG_DN       &msc SCRL_UP    &kp PG_UP       &kp HOME        &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
+        &trans          &trans          &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
         &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
