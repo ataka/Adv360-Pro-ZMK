@@ -23,6 +23,8 @@
 #define SCROLL  8
 #define QWERTY  9
 #define UTIL    10
+#define CURSOR_L 11
+#define CURSOR_R 12
 
 / {
     behaviors {
@@ -88,7 +90,7 @@
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog KEYPAD                                                    &mo MOD &kp N6  &kp N7    &kp N8       &kp N9        &kp N0          &kp MINUS
         &kp TAB   &hm RGUI APOS &hm RALT COMMA &hm RCTRL DOT &hm LALT P &hm LCTRL Y &none                                        &none &hm LCTRL F &hm LALT G &hm RCTRL C &hm RALT R &hm RGUI L     &kp SLASH
         &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &lth UTIL I &none &mt LCTRL LANG2 &td_lalt &td_ralt &mt LCTRL LANG1 &none &lth UTIL D &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
-        &kp LSHFT &kp SEMI  &kp Q    &kp J    &kp K      &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B   &kp M     &kp W        &kp V         &kp Z           &kp RSHFT
+        &kp LSHFT &lth CURSOR_L SEMI  &kp Q    &kp J    &kp K      &kp X             &mt LGUI HOME &mt LGUI PG_UP                      &kp B   &kp M     &kp W        &kp V         &lth CURSOR_R Z &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE               &kp UP    &kp DOWN     &kp LBKT      &kp RBKT        &mo FN
       >;
     };
@@ -218,6 +220,30 @@
         &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &kp LANG1 &trans    &trans    &trans                &trans    &trans        &trans    &trans               &trans    &trans    &trans    &kp LANG2 &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                                   &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans
+      >;
+    };
+    /* layer 11 */
+    /* hold Dvorak ;, left a o e u = mods, right c / h t n = arrows */
+    cursor_l_layer {
+      display-name = "Cursor L";
+      bindings = <
+        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &kp UP    &trans    &trans    &trans
+        &trans    &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL &trans    &trans                &trans    &trans        &trans    &trans               &trans    &trans    &kp LEFT  &kp DOWN  &kp RIGHT &trans    &trans
+        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                                   &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans
+      >;
+    };
+    /* layer 12 */
+    /* hold Dvorak z, right h t n s = mods, left . / o e u = arrows */
+    cursor_r_layer {
+      display-name = "Cursor R";
+      bindings = <
+        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &kp UP    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &kp LEFT  &kp DOWN  &kp RIGHT &trans    &trans                &trans    &trans        &trans    &trans               &trans    &trans    &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                                   &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans
       >;
