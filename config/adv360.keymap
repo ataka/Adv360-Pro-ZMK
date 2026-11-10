@@ -226,11 +226,11 @@
     utility_layer {
       display-name = "Utility";
       bindings = <
-        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &kp LANG1 &trans    &trans    &trans                &trans    &trans        &trans    &trans               &trans    &trans    &trans    &kp LANG2 &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                                   &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &trans          &kp LANG1       &trans          &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &trans          &kp LANG2       &trans          &trans          &trans
+        &trans          &tog CURSOR_R   &tog SCROLL_R   &tog MOUSE_R    &trans          &trans                                                &trans    &trans                                          &trans          &trans          &tog MOUSE_L    &tog SCROLL_L   &tog CURSOR_L   &trans
+        &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
       >;
     };
     /* layer 11 */
@@ -238,11 +238,11 @@
     cursor_l_layer {
       display-name = "Cursor L";
       bindings = <
-        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &kp UP    &trans    &trans    &trans
-        &trans    &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL &trans    &trans                &trans    &trans        &trans    &trans               &trans    &trans    &kp LEFT  &kp DOWN  &kp RIGHT &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                                   &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &kp UP          &trans          &trans          &trans
+        &tog CURSOR_L   &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LEFT        &kp DOWN        &kp RIGHT       &trans          &trans
+        &trans          &tog CURSOR_L   &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
       >;
     };
     /* layer 12 */
@@ -250,11 +250,11 @@
     cursor_r_layer {
       display-name = "Cursor R";
       bindings = <
-        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &kp UP    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &kp LEFT  &kp DOWN  &kp RIGHT &trans    &trans                &trans    &trans        &trans    &trans               &trans    &trans    &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  &trans
-        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                                   &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &trans          &kp UP          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &tog CURSOR_R   &trans          &kp LEFT        &kp DOWN        &kp RIGHT       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
+        &trans          &trans          &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &tog CURSOR_R   &trans
+        &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
       >;
     };
     /* layer 13 */
@@ -265,8 +265,8 @@
       bindings = <
         &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
         &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &mmv MOVE_UL    &mmv MOVE_UP    &mmv MOVE_UR    &trans          &trans
-        &trans          &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans
-        &trans          &trans          &mo MS_LOW      &trans          &mo MS_HIGH     &trans                                                &trans    &trans                                          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans          &trans
+        &tog MOUSE_L    &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans
+        &trans          &trans          &mo MS_LOW      &tog MOUSE_L    &mo MS_HIGH     &trans                                                &trans    &trans                                          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans          &trans
         &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
@@ -278,8 +278,8 @@
       bindings = <
         &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
         &trans          &trans          &mmv MOVE_UL    &mmv MOVE_UP    &mmv MOVE_UR    &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
-        &trans          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans                                                &trans    &trans                                          &trans          &mo MS_HIGH     &trans          &mo MS_LOW      &trans          &trans
+        &tog MOUSE_R    &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
+        &trans          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans                                                &trans    &trans                                          &trans          &mo MS_HIGH     &tog MOUSE_R    &mo MS_LOW      &trans          &trans
         &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
@@ -291,8 +291,8 @@
       bindings = <
         &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
         &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &kp HOME        &kp PG_UP       &msc SCRL_UP    &kp PG_DN       &kp END         &trans
-        &trans          &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT &trans          &trans
-        &trans          &trans          &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
+        &tog SCROLL_L   &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT &trans          &trans
+        &trans          &trans          &tog SCROLL_L   &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
         &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
@@ -304,8 +304,8 @@
       bindings = <
         &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
         &trans          &kp END         &kp PG_DN       &msc SCRL_UP    &kp PG_UP       &kp HOME        &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
-        &trans          &trans          &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
+        &tog SCROLL_R   &trans          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
+        &trans          &trans          &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &tog SCROLL_R   &trans          &trans
         &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
