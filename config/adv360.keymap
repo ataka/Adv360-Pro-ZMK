@@ -22,6 +22,7 @@
 #define MS_HIGH 7
 #define SCROLL  8
 #define QWERTY  9
+#define UTIL    10
 
 / {
     behaviors {
@@ -36,6 +37,20 @@
           quick-tap-ms = <175>;
           flavor = "tap-preferred";
           bindings = <&kp>, <&kp>;
+      };
+
+      /* Layer-tap on home row keys (same feel as &hm, ported from kanata $lt).
+       * tapping-term is shorter than &hm: with 200ms, a quick D(hold)-e(tap)
+       * is not decided in time and types "de".
+       * Usage: &lth LAYER KEY */
+      lth: layer_tap_homerow {
+          compatible = "zmk,behavior-hold-tap";
+          label = "LAYER_TAP_HOMEROW";
+          #binding-cells = <2>;
+          tapping-term-ms = <150>;
+          quick-tap-ms = <175>;
+          flavor = "tap-preferred";
+          bindings = <&mo>, <&kp>;
       };
 
       /* Thumb Ctrl keys use plain &mt (hold-preferred): hold = LCTRL,
@@ -72,7 +87,7 @@
       bindings = <
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog KEYPAD                                                    &mo MOD &kp N6  &kp N7    &kp N8       &kp N9        &kp N0          &kp MINUS
         &kp TAB   &hm RGUI APOS &hm RALT COMMA &hm RCTRL DOT &hm LALT P &hm LCTRL Y &none                                        &none &hm LCTRL F &hm LALT G &hm RCTRL C &hm RALT R &hm RGUI L     &kp SLASH
-        &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &kp I &none &mt LCTRL LANG2 &td_lalt &td_ralt &mt LCTRL LANG1    &none &kp D   &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
+        &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &lth UTIL I &none &mt LCTRL LANG2 &td_lalt &td_ralt &mt LCTRL LANG1 &none &lth UTIL D &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
         &kp LSHFT &kp SEMI  &kp Q    &kp J    &kp K      &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B   &kp M     &kp W        &kp V         &kp Z           &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE               &kp UP    &kp DOWN     &kp LBKT      &kp RBKT        &mo FN
       >;
@@ -193,6 +208,18 @@
         &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none   &mt LCTRL LANG2   &td_lalt &td_ralt  &mt LCTRL LANG1     &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp APOS
         &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                       &mt LGUI HOME &mt LGUI PG_UP                      &kp N  &kp M  &kp COMMA &kp DOT  &kp SLASH &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo FN
+      >;
+    };
+    /* layer 10 */
+    /* hold Dvorak i / d, then e -> Kana, t -> Eisu */
+    utility_layer {
+      display-name = "Utility";
+      bindings = <
+        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans    &trans    &trans                                                                       &trans    &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &kp LANG1 &trans    &trans    &trans                &trans    &trans        &trans    &trans               &trans    &trans    &trans    &kp LANG2 &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                                   &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans
       >;
     };
   };
