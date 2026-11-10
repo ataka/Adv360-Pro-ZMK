@@ -26,12 +26,25 @@
           bindings = <&kp>, <&kp>;
       };
 
+      /* hold: modifier, tap: key (used inside tap-dance)
+       * Tap-dance already waits its own tapping-term, so a key still held
+       * when this is invoked is a hold. Keep tapping-term short to avoid
+       * adding extra delay before the modifier becomes active. */
+      ht_ctl: hold_tap_ctrl {
+          compatible = "zmk,behavior-hold-tap";
+          label = "HOLD_TAP_CTRL";
+          #binding-cells = <2>;
+          tapping-term-ms = <10>;
+          flavor = "hold-preferred";
+          bindings = <&kp>, <&kp>;
+      };
+
       td_lctl: tap_dance_lctrl_tog4 {
           compatible = "zmk,behavior-tap-dance";
           label = "LEFT_CONTROL_TOGGLE_LAYER_4";
           #binding-cells = <0>;
           tapping-term-ms = <200>;
-          bindings = <&kp LCTRL>, <&tog 4>, <&tog 9>;
+          bindings = <&ht_ctl LCTRL LANG2>, <&tog 4>, <&tog 9>;
       };
 
       td_rctl: tap_dance_rctrl_tog5 {
@@ -39,7 +52,7 @@
           label = "RIGHT_CONTROL_TOGGLE_LAYER_5";
           #binding-cells = <0>;
           tapping-term-ms = <200>;
-          bindings = <&kp LCTRL>, <&tog 5>;
+          bindings = <&ht_ctl LCTRL LANG1>, <&tog 5>;
       };
     };
 
