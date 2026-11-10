@@ -8,6 +8,11 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 600  /* 600 */
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20   /*  10 */
 #include <dt-bindings/zmk/pointing.h>
+/* Diagonal mouse moves (X and Y are encoded in separate bits) */
+#define MOVE_UL (MOVE_UP | MOVE_LEFT)
+#define MOVE_UR (MOVE_UP | MOVE_RIGHT)
+#define MOVE_DL (MOVE_DOWN | MOVE_LEFT)
+#define MOVE_DR (MOVE_DOWN | MOVE_RIGHT)
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
@@ -25,6 +30,8 @@
 #define UTIL    10
 #define CURSOR_L 11
 #define CURSOR_R 12
+#define MOUSE_L 13
+#define MOUSE_R 14
 
 / {
     behaviors {
@@ -90,7 +97,7 @@
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog KEYPAD                                                    &mo MOD &kp N6  &kp N7    &kp N8       &kp N9        &kp N0          &kp MINUS
         &kp TAB   &hm RGUI APOS &hm RALT COMMA &hm RCTRL DOT &hm LALT P &hm LCTRL Y &none                                        &none &hm LCTRL F &hm LALT G &hm RCTRL C &hm RALT R &hm RGUI L     &kp SLASH
         &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &lth UTIL I &none &mt LCTRL LANG2 &td_lalt &td_ralt &mt LCTRL LANG1 &none &lth UTIL D &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
-        &kp LSHFT &lth CURSOR_L SEMI  &kp Q    &kp J    &kp K      &kp X             &mt LGUI HOME &mt LGUI PG_UP                      &kp B   &kp M     &kp W        &kp V         &lth CURSOR_R Z &kp RSHFT
+        &kp LSHFT &lth CURSOR_L SEMI  &kp Q    &lth MOUSE_L J    &kp K      &kp X    &mt LGUI HOME &mt LGUI PG_UP                      &kp B   &kp M     &lth MOUSE_R W &kp V       &lth CURSOR_R Z &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE               &kp UP    &kp DOWN     &kp LBKT      &kp RBKT        &mo FN
       >;
     };
@@ -246,6 +253,32 @@
         &trans    &trans    &kp LEFT  &kp DOWN  &kp RIGHT &trans    &trans                &trans    &trans        &trans    &trans               &trans    &trans    &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                                   &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans
+      >;
+    };
+    /* layer 13 */
+    /* hold Dvorak j, left a o e u = mods, q / k = slow / fast,
+     * right c / h t n = move, g r / m v = diagonal, thumbs = clicks */
+    mouse_l_layer {
+      display-name = "Mouse L";
+      bindings = <
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &mmv MOVE_UL    &mmv MOVE_UP    &mmv MOVE_UR    &trans          &trans
+        &trans          &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans
+        &trans          &trans          &mo MS_LOW      &trans          &mo MS_HIGH     &trans                                                &trans    &trans                                          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans          &trans
+        &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
+      >;
+    };
+    /* layer 14 */
+    /* hold Dvorak w, right h t n s = mods, v / m = slow / fast,
+     * left . / o e u = move, , p / q k = diagonal, thumbs = clicks */
+    mouse_r_layer {
+      display-name = "Mouse R";
+      bindings = <
+        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &mmv MOVE_UL    &mmv MOVE_UP    &mmv MOVE_UR    &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+        &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
+        &trans          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans                                                &trans    &trans                                          &trans          &mo MS_HIGH     &trans          &mo MS_LOW      &trans          &trans
+        &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
   };
