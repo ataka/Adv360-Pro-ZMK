@@ -26,43 +26,28 @@
           bindings = <&kp>, <&kp>;
       };
 
-      /* Thumb Ctrl keys: hold-tap is the outer behavior so that pressing
-       * another key decides "hold" immediately (Ctrl + key without delay).
-       * Do not nest a hold-tap inside a tap-dance: the hold-tap listener runs
-       * before the tap-dance listener, so the interrupting key is missed.
-       * Usage: &ht_lctl LCTRL 0 (the second parameter is ignored) */
-      ht_lctl: hold_tap_lctrl_eisu {
-          compatible = "zmk,behavior-hold-tap";
-          label = "LEFT_CONTROL_EISU";
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          flavor = "hold-preferred";
-          bindings = <&kp>, <&td_eisu>;
-      };
+      /* Thumb Ctrl keys use plain &mt (hold-preferred): hold = LCTRL,
+       * tap = LANG2 (Eisu) / LANG1 (Kana).
+       * Do not combine hold-tap and tap-dance on the same key:
+       * - hold-tap inside tap-dance: the hold-tap listener runs before the
+       *   tap-dance listener, so a key that interrupts the tap-dance is missed.
+       * - tap-dance inside hold-tap: the tap-dance only sees the press when
+       *   the key is released, so double taps hardly register. */
 
-      ht_rctl: hold_tap_rctrl_kana {
-          compatible = "zmk,behavior-hold-tap";
-          label = "RIGHT_CONTROL_KANA";
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          flavor = "hold-preferred";
-          bindings = <&kp>, <&td_kana>;
-      };
-
-      td_eisu: tap_dance_eisu_tog4 {
+      td_lalt: tap_dance_lalt_tog4 {
           compatible = "zmk,behavior-tap-dance";
-          label = "EISU_TOGGLE_LAYER_4";
+          label = "LEFT_ALT_TOGGLE_LAYER_4";
           #binding-cells = <0>;
           tapping-term-ms = <200>;
-          bindings = <&kp LANG2>, <&tog 4>, <&tog 9>;
+          bindings = <&kp LALT>, <&tog 4>, <&tog 9>;
       };
 
-      td_kana: tap_dance_kana_tog5 {
+      td_ralt: tap_dance_ralt_tog5 {
           compatible = "zmk,behavior-tap-dance";
-          label = "KANA_TOGGLE_LAYER_5";
+          label = "RIGHT_ALT_TOGGLE_LAYER_5";
           #binding-cells = <0>;
           tapping-term-ms = <200>;
-          bindings = <&kp LANG1>, <&tog 5>;
+          bindings = <&kp LALT>, <&tog 5>;
       };
     };
 
@@ -75,7 +60,7 @@
       bindings = <
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6  &kp N7    &kp N8       &kp N9        &kp N0          &kp MINUS
         &kp TAB   &hm RGUI APOS &hm RALT COMMA &hm RCTRL DOT &hm LALT P &hm LCTRL Y &none                                        &none &hm LCTRL F &hm LALT G &hm RCTRL C &hm RALT R &hm RGUI L     &kp SLASH
-        &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &kp I &none &ht_lctl LCTRL 0 &kp LALT &kp LALT &ht_rctl LCTRL 0  &none &kp D   &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
+        &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &kp I &none &mt LCTRL LANG2 &td_lalt &td_ralt &mt LCTRL LANG1    &none &kp D   &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
         &kp LSHFT &kp SEMI  &kp Q    &kp J    &kp K      &kp X                       &mt LGUI HOME &mt LGUI PG_UP                      &kp B   &kp M     &kp W        &kp V         &kp Z           &kp RSHFT
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE               &kp UP    &kp DOWN     &kp LBKT      &kp RBKT        &mo 2
       >;
@@ -138,7 +123,7 @@
       bindings = <
         &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &tog 1                                                                   &mo 3 &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
         &kp TAB   &kp APOS  &kp COMMA &kp DOT   &kp P     &kp Y     &none                                                                    &none &kp F     &kp G     &kp C     &kp R     &kp L     &kp SLASH
-        &kp ESC   &kp A     &kp O     &kp E     &kp U     &kp I     &none       &ht_lctl LCTRL 0    &kp LALT      &kp LALT  &ht_rctl LCTRL 0 &none &kp D     &kp H     &kp T     &kp N     &kp S     &kp BSLH
+        &kp ESC   &kp A     &kp O     &kp E     &kp U     &kp I     &none       &mt LCTRL LANG2     &td_lalt      &td_ralt  &mt LCTRL LANG1  &none &kp D     &kp H     &kp T     &kp N     &kp S     &kp BSLH
         &kp LSHFT &kp SEMI  &kp Q     &kp J     &kp K     &kp X                                     &mt LGUI HOME &mt LGUI PG_UP                   &kp B     &kp M     &kp W     &kp V     &kp Z     &kp RSHFT
         &mo 2     &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                       &kp BSPC  &kp DEL   &kp END       &kp PG_DN &kp ENTER &kp SPACE              &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo 2
       >;
@@ -149,7 +134,7 @@
       bindings = <
         &trans    &trans    &kp LG(V) &kp LG(C) &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &kp LG(C) &kp LG(V)  &trans    &trans
         &trans    &msc SCRL_LEFT &msc SCRL_DOWN &mmv MOVE_UP &msc SCRL_UP &msc SCRL_RIGHT &none                                              &none &msc SCRL_LEFT &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN &msc SCRL_RIGHT &trans
-        &trans    &mo 6     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo 7 &none   &ht_lctl LCTRL 0  &trans  &trans &ht_rctl LCTRL 0    &none &mo 7     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo 6 &trans
+        &trans    &mo 6     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo 7 &none     &trans    &trans        &trans &trans              &none &mo 7     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo 6 &trans
         &trans    &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL &trans                                    &trans        &trans                           &trans    &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  &trans
         &mo 2     &mo 8     &trans    &trans    &trans                          &mkp LCLK &mkp RCLK &trans        &trans &mkp RCLK &mkp LCLK                 &trans    &trans    &trans    &trans    &mo 2
       >;
@@ -160,7 +145,7 @@
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &none                                                                    &none &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &none       &ht_lctl LCTRL 0    &trans        &trans &ht_rctl LCTRL 0    &none &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans    &trans    &none                 &trans    &trans        &trans &trans              &none &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
         &mo 2     &mo 8     &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
       >;
@@ -171,7 +156,7 @@
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &none                                                                    &none &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &none       &ht_lctl LCTRL 0    &trans        &trans &ht_rctl LCTRL 0    &none &trans    &trans    &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &trans    &trans    &trans    &none                 &trans    &trans        &trans &trans              &none &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
         &mo 2     &mo 8     &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
       >;
@@ -182,7 +167,7 @@
       bindings = <
         &trans    &trans    &trans    &trans    &trans    &trans    &tog 1                                                                   &mo 3 &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &msc SCRL_UP &trans &trans    &none                                                                    &none &trans    &trans    &msc SCRL_UP &trans &trans  &trans
-        &trans    &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &none  &ht_lctl LCTRL 0  &trans  &trans &ht_rctl LCTRL 0    &none &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &trans
+        &trans    &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &none    &trans    &trans        &trans &trans              &none &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
         &mo 2     &mo 8     &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo 2
       >;
@@ -193,7 +178,7 @@
       bindings = <
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
         &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
-        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none   &ht_lctl LCTRL 0  &kp LALT &kp LALT  &ht_rctl LCTRL 0    &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp APOS
+        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none   &mt LCTRL LANG2   &td_lalt &td_ralt  &mt LCTRL LANG1     &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp APOS
         &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                       &mt LGUI HOME &mt LGUI PG_UP                      &kp N  &kp M  &kp COMMA &kp DOT  &kp SLASH &kp RSHFT
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
