@@ -16,21 +16,21 @@
  * _L / _R of CURSOR / MOUSE / SCROLL: the hand that operates the cursor /
  * mouse / scroll keys. The trigger key and the modifiers are on the other hand.
  */
-#define BASE     0
-#define KEYPAD   1
-#define FN       2
-#define MOD      3
-#define DVORAK   4
-#define QWERTY   5
-#define UTIL     6
-#define CURSOR_L 7
-#define CURSOR_R 8
-#define MOUSE_L  9
-#define MOUSE_R  10
-#define SCROLL_L 11
-#define SCROLL_R 12
-#define MS_LOW   13
-#define MS_HIGH  14
+#define BASE       0
+#define KEYPAD     1
+#define FN         2
+#define MOD        3
+#define DVORAK     4
+#define QWERTY     5
+#define UTIL       6
+#define CURSOR_L   7
+#define CURSOR_R   8
+#define MOUSE_L    9
+#define MOUSE_R    10
+#define SCROLL_L   11
+#define SCROLL_R   12
+#define SLOW_SPEED 13
+#define FAST_SPEED 14
 
 /* Short aliases so that every layer fits a grid of 10 columns per key */
 #define ___       &trans
@@ -73,8 +73,8 @@
 #define SCR_V     &lth SCROLL_L V
 #define CUR_Z     &lth CURSOR_L Z
 /* Mouse and scroll layers */
-#define SLOW      &mo MS_LOW
-#define FAST      &mo MS_HIGH
+#define SLOW      &mo SLOW_SPEED
+#define FAST      &mo FAST_SPEED
 #define CLK_L     &mkp LCLK
 #define CLK_R     &mkp RCLK
 #define MV_U      &mmv MOVE_UP
@@ -351,8 +351,8 @@
       >;
     };
     /* layer 13 -- WHITE, YELLOW */
-    mouse_low_layer {
-      display-name = "Mouse LOW";
+    slow_speed_layer {
+      display-name = "Slow Speed";
       bindings = <
         ___       ___       ___       ___       ___       ___       TOG_KP                                                                &mo MOD   ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
@@ -362,8 +362,8 @@
       >;
     };
     /* layer 14 -- BLUE, WHITE */
-    mouse_high_layer {
-      display-name = "Mouse HIGH";
+    fast_speed_layer {
+      display-name = "Fast Speed";
       bindings = <
         ___       ___       ___       ___       ___       ___       TOG_KP                                                                &mo MOD   ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
@@ -376,13 +376,13 @@
 };
 
 &mmv_input_listener {
-  mouse_low {
-    layers = <MS_LOW>;
+  mouse_slow {
+    layers = <SLOW_SPEED>;
     input-processors = <&zip_xy_scaler 1 4>;
   };
 
-  mouse_high {
-    layers = <MS_HIGH>;
+  mouse_fast {
+    layers = <FAST_SPEED>;
     input-processors = <&zip_xy_scaler 3 1>;
   };
 };
@@ -402,14 +402,14 @@
   input-processors = <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
   /* process-next: keep applying the base processors (invert) above */
-  scroll_low {
-    layers = <MS_LOW>;
+  scroll_slow {
+    layers = <SLOW_SPEED>;
     input-processors = <&scroll_scaler 1 4>;
     process-next;
   };
 
-  scroll_high {
-    layers = <MS_HIGH>;
+  scroll_fast {
+    layers = <FAST_SPEED>;
     input-processors = <&scroll_scaler 3 1>;
     process-next;
   };
