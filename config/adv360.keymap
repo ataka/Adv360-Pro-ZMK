@@ -259,12 +259,12 @@
       >;
     };
     /* layer 6 -- CYAN, CYAN */
-    /* hold Dvorak i / d, then e -> Kana, t -> Eisu */
+    /* hold Dvorak i / d, then e -> Kana, t -> Eisu, . -> Esc */
     utility_layer {
       display-name = "Utility";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       &kp ESC   ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         ___       ___       ___       KANA      ___       ___       ___                 ___       ___       ___       ___                 ___       ___       ___       EISU      ___       ___       ___
         ___       TOG_CUR_R TOG_SCR_R TOG_MOU_R ___       ___                                     ___       ___                                     ___       ___       TOG_MOU_L TOG_SCR_L TOG_CUR_L ___
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
