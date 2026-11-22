@@ -6,7 +6,7 @@
 #include <dt-bindings/zmk/backlight.h>
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 600  /* 600 */
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20   /*  10 */
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 10   /*  10 */
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
@@ -378,7 +378,7 @@
 &mmv_input_listener {
   mouse_slow {
     layers = <SLOW_SPEED>;
-    input-processors = <&zip_xy_scaler 1 4>;
+    input-processors = <&zip_xy_scaler 1 3>;
   };
 
   mouse_fast {
@@ -404,7 +404,7 @@
   /* process-next: keep applying the base processors (invert) above */
   scroll_slow {
     layers = <SLOW_SPEED>;
-    input-processors = <&scroll_scaler 1 4>;
+    input-processors = <&scroll_scaler 1 3>;
     process-next;
   };
 
