@@ -17,23 +17,21 @@
 #include <dt-bindings/zmk/input_transform.h>
 
 /* Layer indices (keep in sync with the order of layers in keymap) */
-#define BASE    0
-#define KEYPAD  1
-#define FN      2
-#define MOD     3
-#define DVORAK  4
-#define MOUSE   5
-#define MS_LOW  6
-#define MS_HIGH 7
-#define SCROLL  8
-#define QWERTY  9
-#define UTIL    10
-#define CURSOR_L 11
-#define CURSOR_R 12
-#define MOUSE_L 13
-#define MOUSE_R 14
-#define SCROLL_L 15
-#define SCROLL_R 16
+#define BASE     0
+#define KEYPAD   1
+#define FN       2
+#define MOD      3
+#define DVORAK   4
+#define MS_LOW   5
+#define MS_HIGH  6
+#define QWERTY   7
+#define UTIL     8
+#define CURSOR_L 9
+#define CURSOR_R 10
+#define MOUSE_L  11
+#define MOUSE_R  12
+#define SCROLL_L 13
+#define SCROLL_R 14
 
 / {
     behaviors {
@@ -79,14 +77,6 @@
           tapping-term-ms = <200>;
           bindings = <&kp LALT>, <&tog DVORAK>, <&tog QWERTY>;
       };
-
-      td_ralt: tap_dance_ralt_tog5 {
-          compatible = "zmk,behavior-tap-dance";
-          label = "RIGHT_ALT_TOGGLE_LAYER_5";
-          #binding-cells = <0>;
-          tapping-term-ms = <200>;
-          bindings = <&kp LALT>, <&tog MOUSE>;
-      };
     };
 
   keymap {
@@ -98,7 +88,7 @@
       bindings = <
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog KEYPAD                                                    &mo MOD &kp N6  &kp N7    &kp N8       &kp N9        &kp N0          &kp MINUS
         &kp TAB   &hm RGUI APOS &hm RALT COMMA &hm RCTRL DOT &hm LALT P &hm LCTRL Y &none                                        &none &hm LCTRL F &hm LALT G &hm RCTRL C &hm RALT R &hm RGUI L     &kp SLASH
-        &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &lth UTIL I &none &mt LCTRL LANG2 &td_lalt &td_ralt &mt LCTRL LANG1 &none &lth UTIL D &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
+        &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &lth UTIL I &none &mt LCTRL LANG2 &td_lalt &kp LALT &mt LCTRL LANG1 &none &lth UTIL D &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
         &kp LSHFT &lth CURSOR_L SEMI  &lth SCROLL_L Q    &lth MOUSE_L J    &kp K      &kp X    &mt LGUI HOME &mt LGUI PG_UP            &kp B   &kp M     &lth MOUSE_R W &lth SCROLL_R V &lth CURSOR_R Z &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE               &kp UP    &kp DOWN     &kp LBKT      &kp RBKT        &mo FN
       >;
@@ -161,23 +151,12 @@
       bindings = <
         &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &tog KEYPAD                                                            &mo MOD &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
         &kp TAB   &kp APOS  &kp COMMA &kp DOT   &kp P     &kp Y     &none                                                                    &none &kp F     &kp G     &kp C     &kp R     &kp L     &kp SLASH
-        &kp ESC   &kp A     &kp O     &kp E     &kp U     &kp I     &none       &mt LCTRL LANG2     &td_lalt      &td_ralt  &mt LCTRL LANG1  &none &kp D     &kp H     &kp T     &kp N     &kp S     &kp BSLH
+        &kp ESC   &kp A     &kp O     &kp E     &kp U     &kp I     &none       &mt LCTRL LANG2     &td_lalt      &kp LALT  &mt LCTRL LANG1  &none &kp D     &kp H     &kp T     &kp N     &kp S     &kp BSLH
         &kp LSHFT &kp SEMI  &kp Q     &kp J     &kp K     &kp X                                     &mt LGUI HOME &mt LGUI PG_UP                   &kp B     &kp M     &kp W     &kp V     &kp Z     &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                       &kp BSPC  &kp DEL   &kp END       &kp PG_DN &kp ENTER &kp SPACE              &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
       >;
     };
     /* layer 5 */
-    mouse_layer {
-      display-name = "Mouse";
-      bindings = <
-        &trans    &trans    &kp LG(V) &kp LG(C) &trans    &trans    &tog KEYPAD                                                            &mo MOD &trans    &trans    &kp LG(C) &kp LG(V)  &trans   &trans
-        &trans    &msc SCRL_LEFT &msc SCRL_DOWN &mmv MOVE_UP &msc SCRL_UP &msc SCRL_RIGHT &none                                              &none &msc SCRL_LEFT &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN &msc SCRL_RIGHT &trans
-        &trans    &mo MS_LOW &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo MS_HIGH &none &trans &trans        &trans &trans              &none &mo MS_HIGH &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mo MS_LOW &trans
-        &trans    &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL &trans                                    &trans        &trans                           &trans    &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  &trans
-        &mo FN    &mo SCROLL &trans   &trans    &trans                          &mkp LCLK &mkp RCLK &trans        &trans &mkp RCLK &mkp LCLK                 &trans    &trans    &trans    &trans    &mo FN
-      >;
-    };
-    /* layer 6 */
     mouse_low_layer {
       display-name = "Mouse LOW";
       bindings = <
@@ -185,10 +164,10 @@
         &trans    &trans    &trans    &trans    &trans    &trans    &none                                                                    &none &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &none                 &trans    &trans        &trans &trans              &none &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
-        &mo FN    &mo SCROLL &trans   &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo FN
+        &mo FN    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo FN
       >;
     };
-    /* layer 7 */
+    /* layer 6 */
     mouse_high_layer {
       display-name = "Mouse HIGH";
       bindings = <
@@ -196,32 +175,21 @@
         &trans    &trans    &trans    &trans    &trans    &trans    &none                                                                    &none &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &none                 &trans    &trans        &trans &trans              &none &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
-        &mo FN    &mo SCROLL &trans   &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo FN
+        &mo FN    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo FN
       >;
     };
-    /* layer 8 */
-    scroll_layer {
-      display-name = "Mouse Scroll";
-      bindings = <
-        &trans    &trans    &trans    &trans    &trans    &trans    &tog KEYPAD                                                            &mo MOD &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &msc SCRL_UP &trans &trans    &none                                                                    &none &trans    &trans    &msc SCRL_UP &trans &trans  &trans
-        &trans    &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &none    &trans    &trans        &trans &trans              &none &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &trans
-        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
-        &mo FN    &mo SCROLL &trans   &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo FN
-      >;
-    };
-    /* layer 9 */
+    /* layer 7 */
     qwerty_layer {
       display-name = "Qwerty";
       bindings = <
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog KEYPAD                                                    &mo MOD &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
         &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
-        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none   &mt LCTRL LANG2   &td_lalt &td_ralt  &mt LCTRL LANG1     &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp APOS
+        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none   &mt LCTRL LANG2   &td_lalt &kp LALT  &mt LCTRL LANG1     &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp APOS
         &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                       &mt LGUI HOME &mt LGUI PG_UP                      &kp N  &kp M  &kp COMMA &kp DOT  &kp SLASH &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo FN
       >;
     };
-    /* layer 10 */
+    /* layer 8 */
     /* hold Dvorak i / d, then e -> Kana, t -> Eisu */
     utility_layer {
       display-name = "Utility";
@@ -233,7 +201,7 @@
         &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
       >;
     };
-    /* layer 11 */
+    /* layer 9 */
     /* hold Dvorak ;, left a o e u = mods, right c / h t n = arrows */
     cursor_l_layer {
       display-name = "Cursor L";
@@ -245,7 +213,7 @@
         &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
       >;
     };
-    /* layer 12 */
+    /* layer 10 */
     /* hold Dvorak z, right h t n s = mods, left . / o e u = arrows */
     cursor_r_layer {
       display-name = "Cursor R";
@@ -257,7 +225,7 @@
         &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
       >;
     };
-    /* layer 13 */
+    /* layer 11 */
     /* hold Dvorak j, left a o e u = mods, q / k = slow / fast,
      * right c / h t n = move, g r / m v = diagonal, thumbs = clicks */
     mouse_l_layer {
@@ -270,7 +238,7 @@
         &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
-    /* layer 14 */
+    /* layer 12 */
     /* hold Dvorak w, right h t n s = mods, v / m = slow / fast,
      * left . / o e u = move, , p / q k = diagonal, thumbs = clicks */
     mouse_r_layer {
@@ -283,7 +251,7 @@
         &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
-    /* layer 15 */
+    /* layer 13 */
     /* hold Dvorak q, left a o e u = mods, right c / h t n = scroll,
      * f g c r l = home pgup up pgdn end, thumbs = clicks */
     scroll_l_layer {
@@ -296,7 +264,7 @@
         &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
       >;
     };
-    /* layer 16 */
+    /* layer 14 */
     /* hold Dvorak v, right h t n s = mods, left . / o e u = scroll,
      * ' , . p y = end pgdn up pgup home, thumbs = clicks */
     scroll_r_layer {
