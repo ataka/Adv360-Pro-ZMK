@@ -6,7 +6,8 @@
 #include <dt-bindings/zmk/backlight.h>
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 600  /* 600 */
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 10   /*  10 */
+/* Smooth scrolling sends 16 units per notch, so scale the old 10 by 16 */
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 160  /*  10 */
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
