@@ -17,16 +17,16 @@
 #define FN       2
 #define MOD      3
 #define DVORAK   4
-#define MS_LOW   5
-#define MS_HIGH  6
-#define QWERTY   7
-#define UTIL     8
-#define CURSOR_L 9
-#define CURSOR_R 10
-#define MOUSE_L  11
-#define MOUSE_R  12
-#define SCROLL_L 13
-#define SCROLL_R 14
+#define QWERTY   5
+#define UTIL     6
+#define CURSOR_L 7
+#define CURSOR_R 8
+#define MOUSE_L  9
+#define MOUSE_R  10
+#define SCROLL_L 11
+#define SCROLL_R 12
+#define MS_LOW   13
+#define MS_HIGH  14
 
 /* Short aliases so that every layer fits a grid of 10 columns per key */
 #define ___       &trans
@@ -239,28 +239,6 @@
       >;
     };
     /* layer 5 */
-    mouse_low_layer {
-      display-name = "Mouse LOW";
-      bindings = <
-        ___       ___       ___       ___       ___       ___       TOG_KP                                                                &mo MOD   ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       XXX                 ___       ___       ___       ___                 XXX       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
-        &mo FN    ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       &mo FN
-      >;
-    };
-    /* layer 6 */
-    mouse_high_layer {
-      display-name = "Mouse HIGH";
-      bindings = <
-        ___       ___       ___       ___       ___       ___       TOG_KP                                                                &mo MOD   ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       XXX                 ___       ___       ___       ___                 XXX       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
-        &mo FN    ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       &mo FN
-      >;
-    };
-    /* layer 7 */
     qwerty_layer {
       display-name = "Qwerty";
       bindings = <
@@ -271,7 +249,7 @@
         &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                     &kp BSPC  &kp DEL   &kp END   &kp PG_DN &kp ENTER &kp SPACE                     &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
       >;
     };
-    /* layer 8 */
+    /* layer 6 */
     /* hold Dvorak i / d, then e -> Kana, t -> Eisu */
     utility_layer {
       display-name = "Utility";
@@ -283,7 +261,7 @@
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
-    /* layer 9 */
+    /* layer 7 */
     /* hold Dvorak ;, left a o e u = mods, right c / h t n = arrows */
     cursor_l_layer {
       display-name = "Cursor L";
@@ -295,7 +273,7 @@
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
-    /* layer 10 */
+    /* layer 8 */
     /* hold Dvorak z, right h t n s = mods, left . / o e u = arrows */
     cursor_r_layer {
       display-name = "Cursor R";
@@ -307,7 +285,7 @@
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
-    /* layer 11 */
+    /* layer 9 */
     /* hold Dvorak j, left a o e u = mods, q / k = slow / fast,
      * right c / h t n = move, g r / m v = diagonal, thumbs = clicks */
     mouse_l_layer {
@@ -320,7 +298,7 @@
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
-    /* layer 12 */
+    /* layer 10 */
     /* hold Dvorak w, right h t n s = mods, v / m = slow / fast,
      * left . / o e u = move, , p / q k = diagonal, thumbs = clicks */
     mouse_r_layer {
@@ -333,7 +311,7 @@
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
-    /* layer 13 */
+    /* layer 11 */
     /* hold Dvorak q, left a o e u = mods, right c / h t n = scroll,
      * f g c r l = home pgup up pgdn end, thumbs = clicks */
     scroll_l_layer {
@@ -346,7 +324,7 @@
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
-    /* layer 14 */
+    /* layer 12 */
     /* hold Dvorak v, right h t n s = mods, left . / o e u = scroll,
      * ' , . p y = end pgdn up pgup home, thumbs = clicks */
     scroll_r_layer {
@@ -357,6 +335,28 @@
         TOG_SCR_R ___       SC_L      SC_D      SC_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
         ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       TOG_SCR_R ___       ___
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
+      >;
+    };
+    /* layer 13 */
+    mouse_low_layer {
+      display-name = "Mouse LOW";
+      bindings = <
+        ___       ___       ___       ___       ___       ___       TOG_KP                                                                &mo MOD   ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                 ___       ___       ___       ___                 XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        &mo FN    ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       &mo FN
+      >;
+    };
+    /* layer 14 */
+    mouse_high_layer {
+      display-name = "Mouse HIGH";
+      bindings = <
+        ___       ___       ___       ___       ___       ___       TOG_KP                                                                &mo MOD   ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                 ___       ___       ___       ___                 XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        &mo FN    ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       &mo FN
       >;
     };
   };
