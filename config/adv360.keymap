@@ -39,16 +39,19 @@
 #define GUI_HOME  &mt LGUI HOME
 #define GUI_PGUP  &mt LGUI PG_UP
 /* Base layer: home row mods (&hm) and layer-taps (&lth) */
-#define RGUI_APOS &hm RGUI APOS
+/* RALT + Shift on 2 / 9: the Shift key right below RALT is hard to press together */
+#define RALT_S_2  &hm LS(RALT) N2
+#define RALT_S_9  &hm LS(RALT) N9
+#define LGUI_APOS &hm LGUI APOS
 #define RALT_COMM &hm RALT COMMA
 #define RCTL_DOT  &hm RCTRL DOT
-#define ALT_P     &hm LALT P
+#define RGUI_P    &hm RGUI P
 #define CTL_Y     &hm LCTRL Y
 #define CTL_F     &hm LCTRL F
-#define ALT_G     &hm LALT G
+#define RGUI_G    &hm RGUI G
 #define RCTL_C    &hm RCTRL C
 #define RALT_R    &hm RALT R
-#define RGUI_L    &hm RGUI L
+#define LGUI_L    &hm LGUI L
 #define GUI_A     &hm LGUI A
 #define SFT_O     &hm LSHFT O
 #define ALT_E     &hm LALT E
@@ -170,8 +173,8 @@
     default_layer {
       display-name = "Base";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    TOG_KP                                                                &mo MOD   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
-        &kp TAB   RGUI_APOS RALT_COMM RCTL_DOT  ALT_P     CTL_Y     XXX                                                                   XXX       CTL_F     ALT_G     RCTL_C    RALT_R    RGUI_L    &kp SLASH
+        &kp EQUAL &kp N1    RALT_S_2  &kp N3    &kp N4    &kp N5    TOG_KP                                                                &mo MOD   &kp N6    &kp N7    &kp N8    RALT_S_9  &kp N0    &kp MINUS
+        &kp TAB   LGUI_APOS RALT_COMM RCTL_DOT  RGUI_P    CTL_Y     XXX                                                                   XXX       CTL_F     RGUI_G    RCTL_C    RALT_R    LGUI_L    &kp SLASH
         &kp ESC   GUI_A     SFT_O     ALT_E     CTL_U     UTIL_I    XXX                 CTL_EISU  &td_lalt  &kp LALT  CTL_KANA            XXX       UTIL_D    CTL_H     ALT_T     SFT_N     GUI_S     &kp BSLH
         &kp LSHFT CUR_SEMI  SCR_Q     MOU_J     &kp K     &kp X                                   GUI_HOME  GUI_PGUP                                &kp B     &kp M     MOU_W     SCR_V     CUR_Z     &kp RSHFT
         &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                     &kp BSPC  &kp DEL   &kp END   &kp PG_DN &kp ENTER &kp SPACE                     &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
