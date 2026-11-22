@@ -8,11 +8,6 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 600  /* 600 */
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20   /*  10 */
 #include <dt-bindings/zmk/pointing.h>
-/* Diagonal mouse moves (X and Y are encoded in separate bits) */
-#define MOVE_UL (MOVE_UP | MOVE_LEFT)
-#define MOVE_UR (MOVE_UP | MOVE_RIGHT)
-#define MOVE_DL (MOVE_DOWN | MOVE_LEFT)
-#define MOVE_DR (MOVE_DOWN | MOVE_RIGHT)
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
@@ -32,6 +27,35 @@
 #define MOUSE_R  12
 #define SCROLL_L 13
 #define SCROLL_R 14
+
+/* Short aliases so that layers 8 and later fit a narrow grid */
+#define ___       &trans
+#define KANA      &kp LANG1
+#define EISU      &kp LANG2
+#define SLOW      &mo MS_LOW
+#define FAST      &mo MS_HIGH
+#define CLK_L     &mkp LCLK
+#define CLK_R     &mkp RCLK
+#define MV_U      &mmv MOVE_UP
+#define MV_D      &mmv MOVE_DOWN
+#define MV_L      &mmv MOVE_LEFT
+#define MV_R      &mmv MOVE_RIGHT
+/* Diagonal mouse moves (X and Y are encoded in separate bits) */
+#define MV_UL     &mmv (MOVE_UP | MOVE_LEFT)
+#define MV_UR     &mmv (MOVE_UP | MOVE_RIGHT)
+#define MV_DL     &mmv (MOVE_DOWN | MOVE_LEFT)
+#define MV_DR     &mmv (MOVE_DOWN | MOVE_RIGHT)
+#define SC_U      &msc SCRL_UP
+#define SC_D      &msc SCRL_DOWN
+#define SC_L      &msc SCRL_LEFT
+#define SC_R      &msc SCRL_RIGHT
+/* Layer locks */
+#define TOG_CUR_L &tog CURSOR_L
+#define TOG_CUR_R &tog CURSOR_R
+#define TOG_MOU_L &tog MOUSE_L
+#define TOG_MOU_R &tog MOUSE_R
+#define TOG_SCR_L &tog SCROLL_L
+#define TOG_SCR_R &tog SCROLL_R
 
 / {
     behaviors {
@@ -194,11 +218,11 @@
     utility_layer {
       display-name = "Utility";
       bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &kp LANG1       &trans          &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &trans          &kp LANG2       &trans          &trans          &trans
-        &trans          &tog CURSOR_R   &tog SCROLL_R   &tog MOUSE_R    &trans          &trans                                                &trans    &trans                                          &trans          &trans          &tog MOUSE_L    &tog SCROLL_L   &tog CURSOR_L   &trans
-        &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       KANA      ___       ___       ___             ___   ___   ___   ___         ___       ___       ___       EISU      ___       ___       ___
+        ___       TOG_CUR_R TOG_SCR_R TOG_MOU_R ___       ___                             ___   ___                         ___       ___       TOG_MOU_L TOG_SCR_L TOG_CUR_L ___
+        ___       ___       ___       ___       ___                           ___   ___   ___   ___   ___   ___                       ___       ___       ___       ___       ___
       >;
     };
     /* layer 9 */
@@ -206,11 +230,11 @@
     cursor_l_layer {
       display-name = "Cursor L";
       bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &kp UP          &trans          &trans          &trans
-        &tog CURSOR_L   &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LEFT        &kp DOWN        &kp RIGHT       &trans          &trans
-        &trans          &tog CURSOR_L   &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       &kp UP    ___       ___       ___
+        TOG_CUR_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___             ___   ___   ___   ___         ___       ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___
+        ___       TOG_CUR_L ___       ___       ___       ___                             ___   ___                         ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___                           ___   ___   ___   ___   ___   ___                       ___       ___       ___       ___       ___
       >;
     };
     /* layer 10 */
@@ -218,11 +242,11 @@
     cursor_r_layer {
       display-name = "Cursor R";
       bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &kp UP          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &tog CURSOR_R   &trans          &kp LEFT        &kp DOWN        &kp RIGHT       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
-        &trans          &trans          &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &tog CURSOR_R   &trans
-        &trans          &trans          &trans          &trans          &trans                                            &trans    &trans    &trans    &trans    &trans    &trans                                      &trans          &trans          &trans          &trans          &trans
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       &kp UP    ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        TOG_CUR_R ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___             ___   ___   ___   ___         ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       ___       ___       ___       ___                             ___   ___                         ___       ___       ___       ___       TOG_CUR_R ___
+        ___       ___       ___       ___       ___                           ___   ___   ___   ___   ___   ___                       ___       ___       ___       ___       ___
       >;
     };
     /* layer 11 */
@@ -231,11 +255,11 @@
     mouse_l_layer {
       display-name = "Mouse L";
       bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &mmv MOVE_UL    &mmv MOVE_UP    &mmv MOVE_UR    &trans          &trans
-        &tog MOUSE_L    &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans
-        &trans          &trans          &mo MS_LOW      &tog MOUSE_L    &mo MS_HIGH     &trans                                                &trans    &trans                                          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans          &trans
-        &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       MV_UL     MV_U      MV_UR     ___       ___
+        TOG_MOU_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___             ___   ___   ___   ___         ___       ___       MV_L      MV_D      MV_R      ___       ___
+        ___       ___       SLOW      TOG_MOU_L FAST      ___                             ___   ___                         ___       MV_DL     ___       MV_DR     ___       ___
+        ___       ___       ___       ___       ___                           CLK_L CLK_R ___   ___   CLK_R CLK_L                     ___       ___       ___       ___       ___
       >;
     };
     /* layer 12 */
@@ -244,11 +268,11 @@
     mouse_r_layer {
       display-name = "Mouse R";
       bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &mmv MOVE_UL    &mmv MOVE_UP    &mmv MOVE_UR    &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &tog MOUSE_R    &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
-        &trans          &trans          &mmv MOVE_DL    &trans          &mmv MOVE_DR    &trans                                                &trans    &trans                                          &trans          &mo MS_HIGH     &tog MOUSE_R    &mo MS_LOW      &trans          &trans
-        &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        ___       ___       MV_UL     MV_U      MV_UR     ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        TOG_MOU_R ___       MV_L      MV_D      MV_R      ___       ___             ___   ___   ___   ___         ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       MV_DL     ___       MV_DR     ___                             ___   ___                         ___       FAST      TOG_MOU_R SLOW      ___       ___
+        ___       ___       ___       ___       ___                           CLK_L CLK_R ___   ___   CLK_R CLK_L                     ___       ___       ___       ___       ___
       >;
     };
     /* layer 13 */
@@ -257,11 +281,11 @@
     scroll_l_layer {
       display-name = "Scroll L";
       bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &kp HOME        &kp PG_UP       &msc SCRL_UP    &kp PG_DN       &kp END         &trans
-        &tog SCROLL_L   &kp LGUI        &kp LSHFT       &kp LALT        &kp LCTRL       &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT &trans          &trans
-        &trans          &trans          &tog SCROLL_L   &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                           ___       &kp HOME  &kp PG_UP SC_U      &kp PG_DN &kp END   ___
+        TOG_SCR_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___             ___   ___   ___   ___         ___       ___       SC_L      SC_D      SC_R      ___       ___
+        ___       ___       TOG_SCR_L ___       ___       ___                             ___   ___                         ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___                           CLK_L CLK_R ___   ___   CLK_R CLK_L                     ___       ___       ___       ___       ___
       >;
     };
     /* layer 14 */
@@ -270,11 +294,11 @@
     scroll_r_layer {
       display-name = "Scroll R";
       bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &trans          &kp END         &kp PG_DN       &msc SCRL_UP    &kp PG_UP       &kp HOME        &trans                                                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &tog SCROLL_R   &trans          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT &trans          &trans                      &trans    &trans    &trans    &trans                &trans          &trans          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &trans
-        &trans          &trans          &trans          &trans          &trans          &trans                                                &trans    &trans                                          &trans          &trans          &trans          &tog SCROLL_R   &trans          &trans
-        &trans          &trans          &trans          &trans          &trans                                            &mkp LCLK &mkp RCLK &trans    &trans    &mkp RCLK &mkp LCLK                                   &trans          &trans          &trans          &trans          &trans
+        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
+        ___       &kp END   &kp PG_DN SC_U      &kp PG_UP &kp HOME  ___                                           ___       ___       ___       ___       ___       ___       ___
+        TOG_SCR_R ___       SC_L      SC_D      SC_R      ___       ___             ___   ___   ___   ___         ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       ___       ___       ___       ___                             ___   ___                         ___       ___       ___       TOG_SCR_R ___       ___
+        ___       ___       ___       ___       ___                           CLK_L CLK_R ___   ___   CLK_R CLK_L                     ___       ___       ___       ___       ___
       >;
     };
   };
