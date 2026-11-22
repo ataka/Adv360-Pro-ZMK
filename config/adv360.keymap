@@ -28,10 +28,44 @@
 #define SCROLL_L 13
 #define SCROLL_R 14
 
-/* Short aliases so that layers 8 and later fit a narrow grid */
+/* Short aliases so that every layer fits a grid of 10 columns per key */
 #define ___       &trans
+#define XXX       &none
+#define TOG_KP    &tog KEYPAD
 #define KANA      &kp LANG1
 #define EISU      &kp LANG2
+#define CTL_KANA  &mt LCTRL LANG1
+#define CTL_EISU  &mt LCTRL LANG2
+#define GUI_HOME  &mt LGUI HOME
+#define GUI_PGUP  &mt LGUI PG_UP
+/* Base layer: home row mods (&hm) and layer-taps (&lth) */
+#define RGUI_APOS &hm RGUI APOS
+#define RALT_COMM &hm RALT COMMA
+#define RCTL_DOT  &hm RCTRL DOT
+#define ALT_P     &hm LALT P
+#define CTL_Y     &hm LCTRL Y
+#define CTL_F     &hm LCTRL F
+#define ALT_G     &hm LALT G
+#define RCTL_C    &hm RCTRL C
+#define RALT_R    &hm RALT R
+#define RGUI_L    &hm RGUI L
+#define GUI_A     &hm LGUI A
+#define SFT_O     &hm LSHFT O
+#define ALT_E     &hm LALT E
+#define CTL_U     &hm LCTRL U
+#define UTIL_I    &lth UTIL I
+#define UTIL_D    &lth UTIL D
+#define CTL_H     &hm LCTRL H
+#define ALT_T     &hm LALT T
+#define SFT_N     &hm LSHFT N
+#define GUI_S     &hm LGUI S
+#define CUR_SEMI  &lth CURSOR_L SEMI
+#define SCR_Q     &lth SCROLL_L Q
+#define MOU_J     &lth MOUSE_L J
+#define MOU_W     &lth MOUSE_R W
+#define SCR_V     &lth SCROLL_R V
+#define CUR_Z     &lth CURSOR_R Z
+/* Mouse and scroll layers */
 #define SLOW      &mo MS_LOW
 #define FAST      &mo MS_HIGH
 #define CLK_L     &mkp LCLK
@@ -56,6 +90,30 @@
 #define TOG_MOU_R &tog MOUSE_R
 #define TOG_SCR_L &tog SCROLL_L
 #define TOG_SCR_R &tog SCROLL_R
+/* Keypad */
+#define K_NUM     &kp KP_NUM
+#define K_EQL     &kp KP_EQUAL
+#define K_DIV     &kp KP_DIVIDE
+#define K_MUL     &kp KP_MULTIPLY
+#define K_MIN     &kp KP_MINUS
+#define K_PLUS    &kp KP_PLUS
+#define K_ENT     &kp KP_ENTER
+#define K_DOT     &kp KP_DOT
+/* Mod layer */
+#define BT_SEL0   &bt BT_SEL 0
+#define BT_SEL1   &bt BT_SEL 1
+#define BT_SEL2   &bt BT_SEL 2
+#define BT_SEL3   &bt BT_SEL 3
+#define BT_SEL4   &bt BT_SEL 4
+#define BT_CLEAR  &bt BT_CLR
+#define STUDIO_UL &studio_unlock
+#define BOOTLDR   &bootloader
+#define stp_BAT   &stp STP_BAT
+#define MACRO_VER &macro_ver
+#define bl_TOG    &bl BL_TOG
+#define bl_INC    &bl BL_INC
+#define bl_DEC    &bl BL_DEC
+#define rgb_TOG   &rgb_ug RGB_TOG
 
 / {
     behaviors {
@@ -110,44 +168,44 @@
     default_layer {
       display-name = "Base";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog KEYPAD                                                    &mo MOD &kp N6  &kp N7    &kp N8       &kp N9        &kp N0          &kp MINUS
-        &kp TAB   &hm RGUI APOS &hm RALT COMMA &hm RCTRL DOT &hm LALT P &hm LCTRL Y &none                                        &none &hm LCTRL F &hm LALT G &hm RCTRL C &hm RALT R &hm RGUI L     &kp SLASH
-        &kp ESC   &hm LGUI A &hm LSHFT O &hm LALT E &hm LCTRL U &lth UTIL I &none &mt LCTRL LANG2 &td_lalt &kp LALT &mt LCTRL LANG1 &none &lth UTIL D &hm LCTRL H &hm LALT T &hm LSHFT N   &hm LGUI S      &kp BSLH
-        &kp LSHFT &lth CURSOR_L SEMI  &lth SCROLL_L Q    &lth MOUSE_L J    &kp K      &kp X    &mt LGUI HOME &mt LGUI PG_UP            &kp B   &kp M     &lth MOUSE_R W &lth SCROLL_R V &lth CURSOR_R Z &kp RSHFT
-        &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE               &kp UP    &kp DOWN     &kp LBKT      &kp RBKT        &mo FN
+        &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    TOG_KP                                                                &mo MOD   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
+        &kp TAB   RGUI_APOS RALT_COMM RCTL_DOT  ALT_P     CTL_Y     XXX                                                                   XXX       CTL_F     ALT_G     RCTL_C    RALT_R    RGUI_L    &kp SLASH
+        &kp ESC   GUI_A     SFT_O     ALT_E     CTL_U     UTIL_I    XXX                 CTL_EISU  &td_lalt  &kp LALT  CTL_KANA            XXX       UTIL_D    CTL_H     ALT_T     SFT_N     GUI_S     &kp BSLH
+        &kp LSHFT CUR_SEMI  SCR_Q     MOU_J     &kp K     &kp X                                   GUI_HOME  GUI_PGUP                                &kp B     &kp M     MOU_W     SCR_V     CUR_Z     &kp RSHFT
+        &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                     &kp BSPC  &kp DEL   &kp END   &kp PG_DN &kp ENTER &kp SPACE                     &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
       >;
     };
     /* layer 1 */
     keypad {
       display-name = "Kp";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &trans                                                         &mo MOD &kp N6 &kp KP_NUM &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp MINUS
-        &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp BSLH
-        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none           &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL           &none &kp H  &kp KP_N4  &kp KP_N5    &kp KP_N6     &kp KP_PLUS     &kp SQT
-        &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                            &kp HOME &kp PG_UP                           &kp N  &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &kp RSHFT
-        &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp KP_N0              &kp UP     &kp DOWN     &kp KP_DOT    &kp RBKT        &mo FN
+        &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    ___                                                                   &mo MOD   &kp N6    K_NUM     K_EQL     K_DIV     K_MUL     &kp MINUS
+        &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     XXX                                                                   XXX       &kp Y     &kp KP_N7 &kp KP_N8 &kp KP_N9 K_MIN     &kp BSLH
+        &kp ESC   &kp A     &kp S     &kp D     &kp F     &kp G     XXX                 &kp LCTRL &kp LALT  &kp LGUI  &kp RCTRL           XXX       &kp H     &kp KP_N4 &kp KP_N5 &kp KP_N6 K_PLUS    &kp SQT
+        &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B                                   &kp HOME  &kp PG_UP                               &kp N     &kp KP_N1 &kp KP_N2 &kp KP_N3 K_ENT     &kp RSHFT
+        &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                     &kp BSPC  &kp DEL   &kp END   &kp PG_DN &kp ENTER &kp KP_N0                     &kp UP    &kp DOWN  K_DOT     &kp RBKT  &mo FN
       >;
     };
     /* layer 2 */
     fn {
       display-name = "Fn";
       bindings = <
-        &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6  &tog KEYPAD                                   &mo MOD &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-        &trans &trans &trans &trans &trans &trans  &none                                           &none &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans &trans  &none        &trans &trans &trans &trans        &none &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans &trans                      &trans &trans                     &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans              &trans &trans &trans  &trans  &trans
+        &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6    TOG_KP                                                                &mo MOD   &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
+        ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                 ___       ___       ___       ___                 XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
     /* layer 3 */
     mod {
       display-name = "Mod";
       bindings = <
-        &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                     &trans                 &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &none        &none        &bootloader                                                               &bootloader            &none        &none        &none        &none &none &none
-        &studio_unlock &none &none      &none        &none        &none        &none                   &none &none &bt BT_CLR &none                      &stp STP_BAT           &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &macro_ver   &none                                      &none &none                                                        &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &none                                       &none &none &none &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none &none &none
+        XXX       BT_SEL0   BT_SEL1   BT_SEL2   BT_SEL3   BT_SEL4   XXX                                                                   ___       XXX       XXX       XXX       XXX       XXX       XXX
+        XXX       XXX       XXX       XXX       XXX       XXX       BOOTLDR                                                               BOOTLDR   XXX       XXX       XXX       XXX       XXX       XXX
+        STUDIO_UL XXX       XXX       XXX       XXX       XXX       XXX                 XXX       XXX       BT_CLEAR  XXX                 stp_BAT   XXX       XXX       XXX       XXX       XXX       XXX
+        XXX       XXX       XXX       XXX       MACRO_VER XXX                                     XXX       XXX                                     XXX       XXX       XXX       XXX       XXX       XXX
+        XXX       XXX       XXX       XXX       XXX                           XXX       XXX       XXX       XXX       bl_TOG    rgb_TOG                       bl_INC    bl_DEC    XXX       XXX       XXX
       >;
     };
     extra1 { 
@@ -173,44 +231,44 @@
     dverok_layer {
       display-name = "Dvorak";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &tog KEYPAD                                                            &mo MOD &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
-        &kp TAB   &kp APOS  &kp COMMA &kp DOT   &kp P     &kp Y     &none                                                                    &none &kp F     &kp G     &kp C     &kp R     &kp L     &kp SLASH
-        &kp ESC   &kp A     &kp O     &kp E     &kp U     &kp I     &none       &mt LCTRL LANG2     &td_lalt      &kp LALT  &mt LCTRL LANG1  &none &kp D     &kp H     &kp T     &kp N     &kp S     &kp BSLH
-        &kp LSHFT &kp SEMI  &kp Q     &kp J     &kp K     &kp X                                     &mt LGUI HOME &mt LGUI PG_UP                   &kp B     &kp M     &kp W     &kp V     &kp Z     &kp RSHFT
-        &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                       &kp BSPC  &kp DEL   &kp END       &kp PG_DN &kp ENTER &kp SPACE              &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
+        &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    TOG_KP                                                                &mo MOD   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
+        &kp TAB   &kp APOS  &kp COMMA &kp DOT   &kp P     &kp Y     XXX                                                                   XXX       &kp F     &kp G     &kp C     &kp R     &kp L     &kp SLASH
+        &kp ESC   &kp A     &kp O     &kp E     &kp U     &kp I     XXX                 CTL_EISU  &td_lalt  &kp LALT  CTL_KANA            XXX       &kp D     &kp H     &kp T     &kp N     &kp S     &kp BSLH
+        &kp LSHFT &kp SEMI  &kp Q     &kp J     &kp K     &kp X                                   GUI_HOME  GUI_PGUP                                &kp B     &kp M     &kp W     &kp V     &kp Z     &kp RSHFT
+        &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                     &kp BSPC  &kp DEL   &kp END   &kp PG_DN &kp ENTER &kp SPACE                     &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
       >;
     };
     /* layer 5 */
     mouse_low_layer {
       display-name = "Mouse LOW";
       bindings = <
-        &trans    &trans    &trans    &trans    &trans    &trans    &tog KEYPAD                                                            &mo MOD &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &none                                                                    &none &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &none                 &trans    &trans        &trans &trans              &none &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
-        &mo FN    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo FN
+        ___       ___       ___       ___       ___       ___       TOG_KP                                                                &mo MOD   ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                 ___       ___       ___       ___                 XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        &mo FN    ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       &mo FN
       >;
     };
     /* layer 6 */
     mouse_high_layer {
       display-name = "Mouse HIGH";
       bindings = <
-        &trans    &trans    &trans    &trans    &trans    &trans    &tog KEYPAD                                                            &mo MOD &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &none                                                                    &none &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &none                 &trans    &trans        &trans &trans              &none &trans    &trans    &trans    &trans    &trans    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans                                    &trans        &trans                           &trans    &trans    &trans    &trans    &trans    &trans
-        &mo FN    &trans    &trans    &trans    &trans                          &trans    &trans    &trans        &trans &trans    &trans                    &trans    &trans    &trans    &trans    &mo FN
+        ___       ___       ___       ___       ___       ___       TOG_KP                                                                &mo MOD   ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                                                                   XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       XXX                 ___       ___       ___       ___                 XXX       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        &mo FN    ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       &mo FN
       >;
     };
     /* layer 7 */
     qwerty_layer {
       display-name = "Qwerty";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog KEYPAD                                                    &mo MOD &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
-        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none   &mt LCTRL LANG2   &td_lalt &kp LALT  &mt LCTRL LANG1     &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp APOS
-        &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                       &mt LGUI HOME &mt LGUI PG_UP                      &kp N  &kp M  &kp COMMA &kp DOT  &kp SLASH &kp RSHFT
-        &mo FN    &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo FN
+        &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    TOG_KP                                                                &mo MOD   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
+        &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     XXX                                                                   XXX       &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSLH
+        &kp ESC   &kp A     &kp S     &kp D     &kp F     &kp G     XXX                 CTL_EISU  &td_lalt  &kp LALT  CTL_KANA            XXX       &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp APOS
+        &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B                                   GUI_HOME  GUI_PGUP                                &kp N     &kp M     &kp COMMA &kp DOT   &kp SLASH &kp RSHFT
+        &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                     &kp BSPC  &kp DEL   &kp END   &kp PG_DN &kp ENTER &kp SPACE                     &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
       >;
     };
     /* layer 8 */
@@ -218,11 +276,11 @@
     utility_layer {
       display-name = "Utility";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       KANA      ___       ___       ___             ___   ___   ___   ___         ___       ___       ___       EISU      ___       ___       ___
-        ___       TOG_CUR_R TOG_SCR_R TOG_MOU_R ___       ___                             ___   ___                         ___       ___       TOG_MOU_L TOG_SCR_L TOG_CUR_L ___
-        ___       ___       ___       ___       ___                           ___   ___   ___   ___   ___   ___                       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       KANA      ___       ___       ___                 ___       ___       ___       ___                 ___       ___       ___       EISU      ___       ___       ___
+        ___       TOG_CUR_R TOG_SCR_R TOG_MOU_R ___       ___                                     ___       ___                                     ___       ___       TOG_MOU_L TOG_SCR_L TOG_CUR_L ___
+        ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
     /* layer 9 */
@@ -230,11 +288,11 @@
     cursor_l_layer {
       display-name = "Cursor L";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       &kp UP    ___       ___       ___
-        TOG_CUR_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___             ___   ___   ___   ___         ___       ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___
-        ___       TOG_CUR_L ___       ___       ___       ___                             ___   ___                         ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___                           ___   ___   ___   ___   ___   ___                       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       &kp UP    ___       ___       ___
+        TOG_CUR_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___
+        ___       TOG_CUR_L ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
     /* layer 10 */
@@ -242,11 +300,11 @@
     cursor_r_layer {
       display-name = "Cursor R";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       &kp UP    ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        TOG_CUR_R ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___             ___   ___   ___   ___         ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
-        ___       ___       ___       ___       ___       ___                             ___   ___                         ___       ___       ___       ___       TOG_CUR_R ___
-        ___       ___       ___       ___       ___                           ___   ___   ___   ___   ___   ___                       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       &kp UP    ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        TOG_CUR_R ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       TOG_CUR_R ___
+        ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
     /* layer 11 */
@@ -255,11 +313,11 @@
     mouse_l_layer {
       display-name = "Mouse L";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       MV_UL     MV_U      MV_UR     ___       ___
-        TOG_MOU_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___             ___   ___   ___   ___         ___       ___       MV_L      MV_D      MV_R      ___       ___
-        ___       ___       SLOW      TOG_MOU_L FAST      ___                             ___   ___                         ___       MV_DL     ___       MV_DR     ___       ___
-        ___       ___       ___       ___       ___                           CLK_L CLK_R ___   ___   CLK_R CLK_L                     ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       MV_UL     MV_U      MV_UR     ___       ___
+        TOG_MOU_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       MV_L      MV_D      MV_R      ___       ___
+        ___       ___       SLOW      TOG_MOU_L FAST      ___                                     ___       ___                                     ___       MV_DL     ___       MV_DR     ___       ___
+        ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
     /* layer 12 */
@@ -268,11 +326,11 @@
     mouse_r_layer {
       display-name = "Mouse R";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        ___       ___       MV_UL     MV_U      MV_UR     ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        TOG_MOU_R ___       MV_L      MV_D      MV_R      ___       ___             ___   ___   ___   ___         ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
-        ___       ___       MV_DL     ___       MV_DR     ___                             ___   ___                         ___       FAST      TOG_MOU_R SLOW      ___       ___
-        ___       ___       ___       ___       ___                           CLK_L CLK_R ___   ___   CLK_R CLK_L                     ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       MV_UL     MV_U      MV_UR     ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        TOG_MOU_R ___       MV_L      MV_D      MV_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       MV_DL     ___       MV_DR     ___                                     ___       ___                                     ___       FAST      TOG_MOU_R SLOW      ___       ___
+        ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
     /* layer 13 */
@@ -281,11 +339,11 @@
     scroll_l_layer {
       display-name = "Scroll L";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       ___                                           ___       &kp HOME  &kp PG_UP SC_U      &kp PG_DN &kp END   ___
-        TOG_SCR_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___             ___   ___   ___   ___         ___       ___       SC_L      SC_D      SC_R      ___       ___
-        ___       ___       TOG_SCR_L ___       ___       ___                             ___   ___                         ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___                           CLK_L CLK_R ___   ___   CLK_R CLK_L                     ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       &kp HOME  &kp PG_UP SC_U      &kp PG_DN &kp END   ___
+        TOG_SCR_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       SC_L      SC_D      SC_R      ___       ___
+        ___       ___       TOG_SCR_L ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
     /* layer 14 */
@@ -294,11 +352,11 @@
     scroll_r_layer {
       display-name = "Scroll R";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                           ___       ___       ___       ___       ___       ___       ___
-        ___       &kp END   &kp PG_DN SC_U      &kp PG_UP &kp HOME  ___                                           ___       ___       ___       ___       ___       ___       ___
-        TOG_SCR_R ___       SC_L      SC_D      SC_R      ___       ___             ___   ___   ___   ___         ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
-        ___       ___       ___       ___       ___       ___                             ___   ___                         ___       ___       ___       TOG_SCR_R ___       ___
-        ___       ___       ___       ___       ___                           CLK_L CLK_R ___   ___   CLK_R CLK_L                     ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       &kp END   &kp PG_DN SC_U      &kp PG_UP &kp HOME  ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        TOG_SCR_R ___       SC_L      SC_D      SC_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       TOG_SCR_R ___       ___
+        ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
   };
