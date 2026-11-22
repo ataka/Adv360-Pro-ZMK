@@ -323,7 +323,8 @@
       >;
     };
     /* layer 11 -- WHITE, PURPLE */
-    /* hold Dvorak v, right h t n s = mods, left . / o e u = scroll,
+    /* hold Dvorak v, right h t n s = mods, z / w = fast / slow,
+     * left . / o e u = scroll,
      * ' , . p y = end pgdn up pgup home, thumbs = clicks */
     scroll_l_layer {
       display-name = "Scroll L";
@@ -331,12 +332,13 @@
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         ___       &kp END   &kp PG_DN SC_U      &kp PG_UP &kp HOME  ___                                                                   ___       ___       ___       ___       ___       ___       ___
         TOG_SCR_L ___       SC_L      SC_D      SC_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
-        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       TOG_SCR_L ___       ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       SLOW      TOG_SCR_L FAST      ___
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
     /* layer 12 -- WHITE, CYAN */
-    /* hold Dvorak q, left a o e u = mods, right c / h t n = scroll,
+    /* hold Dvorak q, left a o e u = mods, ; / j = fast / slow,
+     * right c / h t n = scroll,
      * f g c r l = home pgup up pgdn end, thumbs = clicks */
     scroll_r_layer {
       display-name = "Scroll R";
@@ -344,7 +346,7 @@
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       &kp HOME  &kp PG_UP SC_U      &kp PG_DN &kp END   ___
         TOG_SCR_R &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       SC_L      SC_D      SC_R      ___       ___
-        ___       ___       TOG_SCR_R ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        ___       FAST      TOG_SCR_R SLOW      ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
@@ -385,6 +387,30 @@
   };
 };
 
+/* Scaler for scroll values (this ZMK has no zip_scroll_scaler) */
+/ {
+  scroll_scaler: scroll_scaler {
+    compatible = "zmk,input-processor-scaler";
+    #input-processor-cells = <2>;
+    type = <INPUT_EV_REL>;
+    codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+    track-remainders;
+  };
+};
+
 &msc_input_listener {
   input-processors = <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+
+  /* process-next: keep applying the base processors (invert) above */
+  scroll_low {
+    layers = <MS_LOW>;
+    input-processors = <&scroll_scaler 1 4>;
+    process-next;
+  };
+
+  scroll_high {
+    layers = <MS_HIGH>;
+    input-processors = <&scroll_scaler 3 1>;
+    process-next;
+  };
 };
