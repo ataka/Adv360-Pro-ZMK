@@ -11,7 +11,11 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
-/* Layer indices (keep in sync with the order of layers in keymap) */
+/* Layer indices (keep in sync with the order of layers in keymap)
+ *
+ * _L / _R of CURSOR / MOUSE / SCROLL: the hand that operates the cursor /
+ * mouse / scroll keys. The trigger key and the modifiers are on the other hand.
+ */
 #define BASE     0
 #define KEYPAD   1
 #define FN       2
@@ -62,12 +66,12 @@
 #define ALT_T     &hm LALT T
 #define SFT_N     &hm LSHFT N
 #define GUI_S     &hm LGUI S
-#define CUR_SEMI  &lth CURSOR_L SEMI
-#define SCR_Q     &lth SCROLL_L Q
-#define MOU_J     &lth MOUSE_L J
-#define MOU_W     &lth MOUSE_R W
-#define SCR_V     &lth SCROLL_R V
-#define CUR_Z     &lth CURSOR_R Z
+#define CUR_SEMI  &lth CURSOR_R SEMI
+#define SCR_Q     &lth SCROLL_R Q
+#define MOU_J     &lth MOUSE_R J
+#define MOU_W     &lth MOUSE_L W
+#define SCR_V     &lth SCROLL_L V
+#define CUR_Z     &lth CURSOR_L Z
 /* Mouse and scroll layers */
 #define SLOW      &mo MS_LOW
 #define FAST      &mo MS_HIGH
@@ -262,83 +266,83 @@
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         ___       ___       ___       KANA      ___       ___       ___                 ___       ___       ___       ___                 ___       ___       ___       EISU      ___       ___       ___
-        ___       TOG_CUR_R TOG_SCR_R TOG_MOU_R ___       ___                                     ___       ___                                     ___       ___       TOG_MOU_L TOG_SCR_L TOG_CUR_L ___
+        ___       TOG_CUR_L TOG_SCR_L TOG_MOU_L ___       ___                                     ___       ___                                     ___       ___       TOG_MOU_R TOG_SCR_R TOG_CUR_R ___
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
     /* layer 7 -- YELLOW, YELLOW */
-    /* hold Dvorak ;, left a o e u = mods, right c / h t n = arrows */
+    /* hold Dvorak z, right h t n s = mods, left . / o e u = arrows */
     cursor_l_layer {
       display-name = "Cursor L";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       &kp UP    ___       ___       ___
-        TOG_CUR_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___
-        ___       TOG_CUR_L ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        ___       ___       ___       &kp UP    ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        TOG_CUR_L ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       TOG_CUR_L ___
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
     /* layer 8 -- WHITE, BLUE */
-    /* hold Dvorak z, right h t n s = mods, left . / o e u = arrows */
+    /* hold Dvorak ;, left a o e u = mods, right c / h t n = arrows */
     cursor_r_layer {
       display-name = "Cursor R";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       &kp UP    ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        TOG_CUR_R ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
-        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       TOG_CUR_R ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       &kp UP    ___       ___       ___
+        TOG_CUR_R &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___
+        ___       TOG_CUR_R ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
     /* layer 9 -- WHITE, GREEN */
-    /* hold Dvorak j, left a o e u = mods, q / k = fast / slow,
-     * right c / h t n = move, g r / m v = diagonal, thumbs = clicks */
+    /* hold Dvorak w, right h t n s = mods, v / m = fast / slow,
+     * left . / o e u = move, , p / q k = diagonal, thumbs = clicks */
     mouse_l_layer {
       display-name = "Mouse L";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       MV_UL     MV_U      MV_UR     ___       ___
-        TOG_MOU_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       MV_L      MV_D      MV_R      ___       ___
-        ___       ___       FAST      TOG_MOU_L SLOW      ___                                     ___       ___                                     ___       MV_DL     ___       MV_DR     ___       ___
+        ___       ___       MV_UL     MV_U      MV_UR     ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        TOG_MOU_L ___       MV_L      MV_D      MV_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       MV_DL     ___       MV_DR     ___                                     ___       ___                                     ___       SLOW      TOG_MOU_L FAST      ___       ___
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
     /* layer 10 -- WHITE, RED */
-    /* hold Dvorak w, right h t n s = mods, v / m = fast / slow,
-     * left . / o e u = move, , p / q k = diagonal, thumbs = clicks */
+    /* hold Dvorak j, left a o e u = mods, q / k = fast / slow,
+     * right c / h t n = move, g r / m v = diagonal, thumbs = clicks */
     mouse_r_layer {
       display-name = "Mouse R";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        ___       ___       MV_UL     MV_U      MV_UR     ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        TOG_MOU_R ___       MV_L      MV_D      MV_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
-        ___       ___       MV_DL     ___       MV_DR     ___                                     ___       ___                                     ___       SLOW      TOG_MOU_R FAST      ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       MV_UL     MV_U      MV_UR     ___       ___
+        TOG_MOU_R &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       MV_L      MV_D      MV_R      ___       ___
+        ___       ___       FAST      TOG_MOU_R SLOW      ___                                     ___       ___                                     ___       MV_DL     ___       MV_DR     ___       ___
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
     /* layer 11 -- WHITE, PURPLE */
-    /* hold Dvorak q, left a o e u = mods, right c / h t n = scroll,
-     * f g c r l = home pgup up pgdn end, thumbs = clicks */
+    /* hold Dvorak v, right h t n s = mods, left . / o e u = scroll,
+     * ' , . p y = end pgdn up pgup home, thumbs = clicks */
     scroll_l_layer {
       display-name = "Scroll L";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        ___       ___       ___       ___       ___       ___       ___                                                                   ___       &kp HOME  &kp PG_UP SC_U      &kp PG_DN &kp END   ___
-        TOG_SCR_L &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       SC_L      SC_D      SC_R      ___       ___
-        ___       ___       TOG_SCR_L ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        ___       &kp END   &kp PG_DN SC_U      &kp PG_UP &kp HOME  ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        TOG_SCR_L ___       SC_L      SC_D      SC_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       TOG_SCR_L ___       ___
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
     /* layer 12 -- WHITE, CYAN */
-    /* hold Dvorak v, right h t n s = mods, left . / o e u = scroll,
-     * ' , . p y = end pgdn up pgup home, thumbs = clicks */
+    /* hold Dvorak q, left a o e u = mods, right c / h t n = scroll,
+     * f g c r l = home pgup up pgdn end, thumbs = clicks */
     scroll_r_layer {
       display-name = "Scroll R";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        ___       &kp END   &kp PG_DN SC_U      &kp PG_UP &kp HOME  ___                                                                   ___       ___       ___       ___       ___       ___       ___
-        TOG_SCR_R ___       SC_L      SC_D      SC_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
-        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       TOG_SCR_R ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       &kp HOME  &kp PG_UP SC_U      &kp PG_DN &kp END   ___
+        TOG_SCR_R &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       SC_L      SC_D      SC_R      ___       ___
+        ___       ___       TOG_SCR_R ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___                           CLK_L     CLK_R     ___       ___       CLK_R     CLK_L                         ___       ___       ___       ___       ___
       >;
     };
