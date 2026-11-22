@@ -271,26 +271,28 @@
       >;
     };
     /* layer 7 -- YELLOW, YELLOW */
-    /* hold Dvorak z, right h t n s = mods, left . / o e u = arrows */
+    /* hold Dvorak z, right h t n s = mods, v w = gui / shift,
+     * left . / o e u = arrows */
     cursor_l_layer {
       display-name = "Cursor L";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         ___       ___       ___       &kp UP    ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         TOG_CUR_L ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
-        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       TOG_CUR_L ___
+        ___       ___       ___       ___       ___       ___                                     ___       ___                                     ___       ___       &kp LSHFT &kp LGUI  TOG_CUR_L ___
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
     /* layer 8 -- WHITE, BLUE */
-    /* hold Dvorak ;, left a o e u = mods, right c / h t n = arrows */
+    /* hold Dvorak ;, left a o e u = mods, q j = gui / shift,
+     * right c / h t n = arrows */
     cursor_r_layer {
       display-name = "Cursor R";
       bindings = <
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       &kp UP    ___       ___       ___
         TOG_CUR_R &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LEFT  &kp DOWN  &kp RIGHT ___       ___
-        ___       TOG_CUR_R ___       ___       ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
+        ___       TOG_CUR_R &kp LGUI  &kp LSHFT ___       ___                                     ___       ___                                     ___       ___       ___       ___       ___       ___
         ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___
       >;
     };
