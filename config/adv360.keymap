@@ -298,11 +298,12 @@
     };
     /* layer 9 -- WHITE, GREEN */
     /* hold Dvorak w, right h t n s = mods, m / v = fast / slow,
-     * left . / o e u = move, , p / q k = diagonal, thumbs = clicks */
+     * left . / o e u = move, , p / q k = diagonal, 2 3 4 5 = scroll (vi),
+     * thumbs = clicks */
     mouse_l_layer {
       display-name = "Mouse L";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       SC_L      SC_D      SC_U      SC_R      ___                                                                   ___       ___       ___       ___       ___       ___       ___
         ___       ___       MV_UL     MV_U      MV_UR     ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
         TOG_MOU_L ___       MV_L      MV_D      MV_R      ___       ___                 ___       ___       ___       ___                 ___       ___       &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI  ___
         ___       ___       MV_DL     ___       MV_DR     ___                                     ___       ___                                     ___       FAST      TOG_MOU_L SLOW      ___       ___
@@ -311,11 +312,12 @@
     };
     /* layer 10 -- WHITE, RED */
     /* hold Dvorak j, left a o e u = mods, k / q = fast / slow,
-     * right c / h t n = move, g r / m v = diagonal, thumbs = clicks */
+     * right c / h t n = move, g r / m v = diagonal, 6 7 8 9 = scroll (vi),
+     * thumbs = clicks */
     mouse_r_layer {
       display-name = "Mouse R";
       bindings = <
-        ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       ___       ___       ___       ___       ___
+        ___       ___       ___       ___       ___       ___       ___                                                                   ___       SC_L      SC_D      SC_U      SC_R      ___       ___
         ___       ___       ___       ___       ___       ___       ___                                                                   ___       ___       MV_UL     MV_U      MV_UR     ___       ___
         TOG_MOU_R &kp LGUI  &kp LSHFT &kp LALT  &kp LCTRL ___       ___                 ___       ___       ___       ___                 ___       ___       MV_L      MV_D      MV_R      ___       ___
         ___       ___       SLOW      TOG_MOU_R FAST      ___                                     ___       ___                                     ___       MV_DL     ___       MV_DR     ___       ___
